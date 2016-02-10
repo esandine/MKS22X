@@ -1,6 +1,6 @@
-public class Board{
+public class QueenBoard{
     public int[][] board;
-    public Board(int[][] Board){
+    public QueenBoard(int[][] Board){
 	board=new int[Board.length][Board[0].length];
 	for(int row = 0;row<Board.length;row++){
 	    for(int col=0;col<Board[row].length;col++){
@@ -8,7 +8,7 @@ public class Board{
 	    }
 	}
     }
-    public Board(int n){
+    public QueenBoard(int n){
 	board = new int[n][n];
 	for(int row = 0;row<n;row++){
 	    for(int col = 0;col<n;col++){
@@ -16,7 +16,7 @@ public class Board{
 	    }
 	}
     }
-    public String toStringDebug(){
+    public String toString(){
 	String retStr = "";
 	for(int row = 0;row<board.length;row++){
 	    retStr+="\n";
@@ -27,7 +27,7 @@ public class Board{
 	}
 	return retStr;
     }
-    public String toString(){
+    public String printSolution(){
 	String retStr = "";
 	for(int row = 0;row<board.length;row++){
 	    retStr+="\n";
@@ -35,7 +35,7 @@ public class Board{
 		if(board[row][col]>0){
 		    retStr+="Q";
 		}else{
-		    retStr+="e";
+		    retStr+="_";
 		}
 		retStr+=" ";
 	    }
@@ -72,5 +72,21 @@ public class Board{
 	    }
 	}
 	return true;
+    }
+    public boolean solve(){
+	return solveH(0);
+    }
+    public boolean solveH(int col){
+	if(col>=board.length){
+	    return true;
+	}
+	for(int n = 0;n<board.length;n++){
+	    placeQueen(col,n);
+	    if(solveH(col+1)){
+		return true;
+	    }
+	    removeQueen(col,n);
+	}
+	return false;
     }
 }
