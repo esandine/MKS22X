@@ -6,5 +6,8 @@ public class Driver{
 	System.out.println(b1.placeQueen(3,4));
 	System.out.println(b1.placeQueen(0,0));
 	System.out.println(b1);
+	System.out.println(b1.removeQueen(4,2));
+	System.out.println(b1.removeQueen(2,3));
+	System.out.println(b1);
     }
 }

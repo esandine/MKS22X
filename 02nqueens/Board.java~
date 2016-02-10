@@ -21,11 +21,6 @@ public class Board{
 	for(int row = 0;row<board.length;row++){
 	    retStr+="\n";
 	    for(int col = 0;col<board[row].length;col++){
-		/*if(board[row][col]>0){
-		    retStr+="Q";
-		}else{
-		    retStr+="e";
-		    }*/
 		retStr+=board[row][col];
 		retStr+=" ";
 	    }
@@ -42,7 +37,6 @@ public class Board{
 		}else{
 		    retStr+="e";
 		}
-		retStr+=board[row][col];
 		retStr+=" ";
 	    }
 	}
@@ -60,6 +54,19 @@ public class Board{
 	    }
 	}
 	board[row][col]=1;
+	return true;
+    }
+    public boolean removeQueen(int row,int col){
+	if(!(board[row][col]==1)){
+	    return false;
+	}
+	for(int r = 0;r<board.length;r++){
+	    for(int c = 0;c<board.length;c++){
+		if((r==row)||(c==col)||(r-c==row-col)||(r+c==row+col)){
+		    board[r][c]+=1;
+		}
+	    }
+	}
 	return true;
     }
 }
