@@ -16,17 +16,27 @@ public class Board{
 	    }
 	}
     }
+    public String toStringDebug(){
+	String retStr = "";
+	for(int row = 0;row<board.length;row++){
+	    retStr+="\n";
+	    for(int col = 0;col<board[row].length;col++){
+		retStr+=board[row][col];
+		retStr+=" ";
+	    }
+	}
+	return retStr;
+    }
     public String toString(){
 	String retStr = "";
 	for(int row = 0;row<board.length;row++){
 	    retStr+="\n";
 	    for(int col = 0;col<board[row].length;col++){
-		/*if(board[row][col]>0){
+		if(board[row][col]>0){
 		    retStr+="Q";
 		}else{
 		    retStr+="e";
-		    }*/
-		retStr+=board[row][col];
+		}
 		retStr+=" ";
 	    }
 	}
