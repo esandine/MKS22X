@@ -16,8 +16,8 @@ public class Driver{
 	}
 	for(int i = 0;i<boards.length;i++){
 	    System.out.println(i);
-	    System.out.println(boards[i].solve());
-	    System.out.println(boards[i].printSolution());
+	    boards[i].solve();
+	    boards[i].printSolution();
 	}
     }
 }

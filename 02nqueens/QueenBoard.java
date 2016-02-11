@@ -27,7 +27,7 @@ public class QueenBoard{
 	}
 	return retStr;
     }
-    public String printSolution(){
+    public void printSolution(){
 	String retStr = "";
 	for(int row = 0;row<board.length;row++){
 	    retStr+="\n";
@@ -40,7 +40,7 @@ public class QueenBoard{
 		retStr+=" ";
 	    }
 	}
-	return retStr;
+	System.out.println(retStr);
     }
     public boolean placeQueen(int row, int col){
 	if(!(board[row][col]==0)){
