@@ -86,9 +86,10 @@ public class QueenBoard{
 	    if(placeQueen(col,n)){
 		if(solveH(col+1)){
 		    return true;
+		}else{
+		    removeQueen(col,n);
 		}
 	    }
-	    System.out.println(printSolution());
 	}
 	return false;
     }

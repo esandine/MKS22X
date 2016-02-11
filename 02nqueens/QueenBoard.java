@@ -79,7 +79,6 @@ public class QueenBoard{
     public boolean solveH(int col){
 	if(col>=board.length){
 	    //System.out.println("Its working");
-	    System.out.println(printSolution());
 	    return true;
 	}
 	for(int n = 0;n<board.length;n++){
