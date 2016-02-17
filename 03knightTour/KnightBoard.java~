@@ -36,12 +36,12 @@ public class KnightBoard{
     }
     public boolean solveIter(int x, int y, int ctr, int iter){
 	revert(ctr);
-	if(ctr == board.length*board[0].length){
+	if(ctr == board.length*board[0].length+1){
 	    return true;
 	}
 	if(isValidSpot(x+possibleMoves[iter*2],y+possibleMoves[iter*2+1])){
 	    board[x+possibleMoves[iter*2]][y+possibleMoves[iter*2+1]]=ctr;
-	    printSolution();
+	    //printSolution();
 	    if(iter<7){
 		return solveIter(x+possibleMoves[iter*2],y+possibleMoves[iter*2+1],ctr+1,0)||solveIter(x,y,ctr,iter+1);
 	    }

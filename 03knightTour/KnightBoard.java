@@ -27,7 +27,7 @@ public class KnightBoard{
     }
     public void revert(int n){
 	for(int row = 0;row<board.length;row++){
-	    for(int col = 0;col<board.length;col++){
+	    for(int col = 0;col<board[row].length;col++){
 		if(board[row][col]>=n){
 		    board[row][col]=0;
 		}
