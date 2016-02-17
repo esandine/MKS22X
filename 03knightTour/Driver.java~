@@ -1,7 +1,13 @@
 public class Driver{
     public static void main(String[]args){
-	KnightBoard b1 = new KnightBoard(3);
-	//System.out.println(b1.solve());
+	KnightBoard[] knights = new KnightBoard[8];
+	for(int n = 1;n<9;n++){
+	    knights[n]=new KnightBoard(n);
+	    knights[n].solve();
+	    knights[n].printSolution();
+	}
+	KnightBoard b1 = new KnightBoard(5);
+	System.out.println(b1.solve());
 	b1.printSolution();
     }
 }
