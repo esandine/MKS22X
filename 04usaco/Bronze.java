@@ -134,4 +134,46 @@ public class Bronze{
 	}
 	System.out.println(retStr);
     }
+    public int calcVolume(){
+	int retValue = 0;
+	for(int i = 0;i< farm.length;i++){
+	    for(int ii = 0;ii<farm[i].length;ii++){
+		if(farm[i][ii]<elevation){
+		    retValue+=72*72*(elevation-farm[i][ii]);
+		}
+	    }
+	}
+	return retValue;
+    }
+    public void stomp(int n){
+	int row = commands[n][0];
+	int col = commands[n][1];
+	int far = commands[n][2];
+	int max = farm[row][col];
+	System.out.println(row);
+	System.out.println(col);
+	System.out.println(far);
+	for(int i = -1; i < 2; i++){
+	    for(int ii = -1;ii<2;ii++){
+		if(farm[row+i][col+ii]>max){
+		    max = farm[row+i][col+ii];
+		}
+	    }
+	}
+	System.out.println(max-far);
+	for(int i = -1; i < 2; i++){
+	    for(int ii = -1;ii<2;ii++){
+		if(farm[row+i][col+ii]>(max-far)){
+		    farm[row+i][col+ii]=(max-far);
+		}
+	    }
+	}
+    }
+    public void stompsalot(){
+	for(int i  = 0;i<steps;i++){
+	    stomp(i);
+	}
+    }
+    
+	
 }

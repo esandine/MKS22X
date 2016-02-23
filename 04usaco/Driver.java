@@ -10,5 +10,10 @@ public class Driver{
 	System.out.println("test farm");
 	b1.printFarm();
 	b1.printCommands();
+	System.out.println(b1.calcVolume());
+	b1.printFarm();
+	b1.stompsalot();
+	b1.printFarm();
+	System.out.println(b1.calcVolume());
     }
 }
