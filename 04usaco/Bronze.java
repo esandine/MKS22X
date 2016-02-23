@@ -14,25 +14,43 @@ public class Bronze{
 	steps = 0;
 	String currentLine="";
 	int lineNumber = 0;
-	Scanner s2 = new Scanner(currentLine);
 	try{
 	    File f1 = new File(fileName);
 	    Scanner s1 = new Scanner(f1);
 	    while(s1.hasNextLine()){
 		//file+="hello";
 		currentLine = s1.nextLine();
-		s2 = new Scanner(currentLine);
-		if(lineNumber== 0&&currentLine.length()>7){
+		if(lineNumber== 0){
 		    int index = 0;
-		    rows=Integer.parseInt(s2.next());
-		    s2.next();
-		    s2.next();
-		    //while(currentLine.charAt(index)!=' '){
+		    int value = 0;
+		    while(index<currentLine.length()){
+			if(currentLine.charAt(index)==' '){
+				if(value == 0){
+				    System.out.println(currentLine.substring(0,index));
+				    rows=Integer.parseInt(currentLine.substring(0,index));
+				    value+=1;
+				}else if(value == 1){
+				    cols=Integer.parseInt(currentLine.substring(0,index));
+				    value+=1;
+				}else{
+				    elevation=Integer.parseInt(currentLine.substring(0,index));
+				    value+=1;
+				}
+				//System.out.println(index);
+				currentLine=currentLine.substring(index+1,currentLine.length());
+				index = 0;
+			}else{
+				index+=1;
+			}
+			
+		    }
+		    steps=Integer.parseInt(currentLine);
+       		    //while(currentLine.charAt(index)!=' '){
 		    //rows = rows * 10 + Integer.parseInt(""+currentLine.charAt(index));
 		    //index += 1;
 		    //}
-		file+="\n";
 		}
+		lineNumber+=1;
 	    }
 	}
        catch(FileNotFoundException e){
@@ -44,5 +62,14 @@ public class Bronze{
     }
     public int getRows(){
 	return rows;
+    }
+    public int getCols(){
+	return cols;
+    }
+    public int getElevation(){
+	return elevation;
+    }
+    public int getSteps(){
+	return steps;
     }
 }
