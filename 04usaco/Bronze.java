@@ -7,6 +7,7 @@ public class Bronze{
     private int elevation;
     private int steps;
     private int[][]farm;
+    private int[][]commands;
     public Bronze(String fileName){
 	file="";
 	rows = 0;
@@ -14,6 +15,7 @@ public class Bronze{
 	elevation = 0;
 	steps = 0;
 	farm = new int[0][0];
+	commands=new int[0][0];
 	String currentLine="";
 	int lineNumber = 0;
 	try{
@@ -52,6 +54,7 @@ public class Bronze{
 		    //index += 1;
 		    //}
 		farm = new int[rows][cols];
+		commands = new int[steps][3];
 	    //DEALS WITH THE ARRAY
 		}else if(lineNumber<rows+1){
 		int index = 0;
@@ -69,9 +72,26 @@ public class Bronze{
 			}
 		}
 		farm[lineNumber-1][value]=Integer.parseInt(currentLine);
+		//DEALS WITH THE STEPS
+		}else{
+		int index = 0;
+		int value = 0;
+		while(index<currentLine.length()){
+		       	if(currentLine.charAt(index)==' '){
+			    System.out.println(Integer.parseInt(currentLine.substring(0,index)));
+			    commands[lineNumber-1-rows][value]=Integer.parseInt(currentLine.substring(0,index));
+			    value+=1;
+			    currentLine=currentLine.substring(index+1,currentLine.length());
+			    index = 0;
+			}else{
+			    index+=1;
+			}
+		}
+		commands[lineNumber-1-rows][value]=Integer.parseInt(currentLine);
 		}
 				lineNumber+=1;
 	    }
+	    
 	}
        catch(FileNotFoundException e){
 	    System.out.println("No file found");
@@ -98,6 +118,17 @@ public class Bronze{
 	    retStr+="\n";
 	    for(int ii = 0;ii<farm[i].length;ii++){
 		retStr+=farm[i][ii];
+		retStr+=" ";
+	    }
+	}
+	System.out.println(retStr);
+    }
+    public void printCommands(){
+	String retStr = "";
+	for(int i = 0;i< commands.length;i++){
+	    retStr+="\n";
+	    for(int ii = 0;ii<commands[i].length;ii++){
+		retStr+=commands[i][ii];
 		retStr+=" ";
 	    }
 	}

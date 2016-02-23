@@ -9,5 +9,6 @@ public class Driver{
 	System.out.println(b1.getSteps());
 	System.out.println("test farm");
 	b1.printFarm();
+	b1.printCommands();
     }
 }

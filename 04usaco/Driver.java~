@@ -7,5 +7,7 @@ public class Driver{
 	System.out.println(b1.getCols());
 	System.out.println(b1.getElevation());
 	System.out.println(b1.getSteps());
+	System.out.println("test farm");
+	b1.printFarm();
     }
 }
