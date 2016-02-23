@@ -31,7 +31,7 @@ public class Bronze{
 		    while(index<currentLine.length()){
 			if(currentLine.charAt(index)==' '){
 				if(value == 0){
-				    System.out.println(currentLine.substring(0,index));
+				    //System.out.println(currentLine.substring(0,index));
 				    rows=Integer.parseInt(currentLine.substring(0,index));
 				    value+=1;
 				}else if(value == 1){
@@ -59,10 +59,10 @@ public class Bronze{
 		}else if(lineNumber<rows+1){
 		int index = 0;
 		int value = 0;
-		System.out.println("yo");
+		//System.out.println("yo");
 		while(index<currentLine.length()){
 			if(currentLine.charAt(index)==' '){
-			    System.out.println(Integer.parseInt(currentLine.substring(0,index)));
+			    //System.out.println(Integer.parseInt(currentLine.substring(0,index)));
 			    farm[lineNumber-1][value]=Integer.parseInt(currentLine.substring(0,index));
 			    value+=1;
 			    currentLine=currentLine.substring(index+1,currentLine.length());
@@ -78,7 +78,7 @@ public class Bronze{
 		int value = 0;
 		while(index<currentLine.length()){
 		       	if(currentLine.charAt(index)==' '){
-			    System.out.println(Integer.parseInt(currentLine.substring(0,index)));
+			    //System.out.println(Integer.parseInt(currentLine.substring(0,index)));
 			    commands[lineNumber-1-rows][value]=Integer.parseInt(currentLine.substring(0,index));
 			    value+=1;
 			    currentLine=currentLine.substring(index+1,currentLine.length());
@@ -150,9 +150,9 @@ public class Bronze{
 	int col = commands[n][1];
 	int far = commands[n][2];
 	int max = farm[row][col];
-	System.out.println(row);
-	System.out.println(col);
-	System.out.println(far);
+	//System.out.println(row);
+	//System.out.println(col);
+	//System.out.println(far);
 	for(int i = -1; i < 2; i++){
 	    for(int ii = -1;ii<2;ii++){
 		if(farm[row+i][col+ii]>max){
@@ -160,7 +160,7 @@ public class Bronze{
 		}
 	    }
 	}
-	System.out.println(max-far);
+	//System.out.println(max-far);
 	for(int i = -1; i < 2; i++){
 	    for(int ii = -1;ii<2;ii++){
 		if(farm[row+i][col+ii]>(max-far)){
@@ -174,6 +174,10 @@ public class Bronze{
 	    stomp(i);
 	}
     }
-    
+    public static void main(String[] args){
+	Bronze b1 = new Bronze("makelake.in");
+	b1.stompsalot();
+	System.out.println(b1.calcVolume());
+    }
 	
 }
