@@ -35,15 +35,15 @@ public class Maze{
 	    rows+=1;
 	    //System.out.println(n);
 	}
-	maze = new char[rows][currentLine.length()];
+	maze = new char[currentLine.length()][rows];
 	Scanner s2 = new Scanner(f1);
 	int row = 0;
 	while(s2.hasNextLine()){
 	    currentLine = s2.nextLine();
 	    //System.out.println(currentLine);
 	    for(int i = 0;i<currentLine.length();i++){
-		maze[row][i]=currentLine.charAt(i);
-		if(maze[row][i]=='S'){
+		maze[i][row]=currentLine.charAt(i);
+		if(maze[i][row]=='S'){
 		    startx = row;
 		    starty = i;
 		}
