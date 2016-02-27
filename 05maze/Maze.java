@@ -95,6 +95,31 @@ public class Maze{
 	if(maze[x][y]=='E'){
 	    return true;
 	}
+       	return branch(x+1,y)||
+	    branch(x-1,y)||
+	    branch(x,y+1)||
+	    branch(x,y-1);
+	/*
+	if(isFree(x+1,y)){
+	    return solve(x+1,y);
+	}else if(isFree(x-1,y)){
+	    return solve(x-1,y);
+	}else if(isFree(x,y+1)){
+	    return solve(x,y+1);
+	}else if(isFree(x,y-1)){
+	    return solve(x,y-1);
+	}
+	maze[x][y]='.';
+	return false;
+	/*return  solve(x+1,y)||
+	   solve(x-1,y)||
+	   solve(x,y+1)||
+	    solve(x,y-1);{
+	    maze[x][y]= '@';
+	}else{
+	    maze[x][y]='.';
+	}
+        //so it compiles
 	if(!((maze[x+1][y]==' ')||
 	   (maze[x-1][y]==' ')||
 	   (maze[x][y+1]==' ')||
@@ -102,15 +127,31 @@ public class Maze{
 	    maze[x][y]='.';
 	    System.out.println("Dot me");
 	    return false;
-	}
-	maze[x][y]='@';
-	return solve(x+1,y)||
-	   solve(x-1,y)||
-	   solve(x,y+1)||
-	    solve(x,y-1);
-        //so it compiles
-    }
+	    }*/
 
+	}
+    private boolean isFree(int x,int y){
+	if(maze[x][y]=='E'){
+	    //System.out.println("Yooooo");
+	    return true;
+	}
+	if(maze[x][y]==' '){
+	    maze[x][y]='@';
+	    return true;
+	}
+
+	return false;
+    }
+    private boolean branch(int x, int y){
+	if(isFree(x,y)){
+	    if(solve(x,y)){
+		return true;
+	    }else{
+		maze[x][y]='.';
+	    }
+	}
+	return false;
+    }
 
     //FREE STUFF!!! *you should be aware of this*
 
