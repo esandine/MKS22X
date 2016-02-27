@@ -44,8 +44,8 @@ public class Maze{
 	    for(int i = 0;i<currentLine.length();i++){
 		maze[i][row]=currentLine.charAt(i);
 		if(maze[i][row]=='S'){
-		    startx = row;
-		    starty = i;
+		    starty = row;
+		    startx = i;
 		}
 	    }
 	    row++;

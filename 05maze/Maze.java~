@@ -95,7 +95,7 @@ public class Maze{
 	if(maze[x][y]=='E'){
 	    return true;
 	}
-	return branch(x+1,y)||
+       	return branch(x+1,y)||
 	    branch(x-1,y)||
 	    branch(x,y+1)||
 	    branch(x,y-1);
@@ -129,18 +129,28 @@ public class Maze{
 	    return false;
 	    }*/
 
-    }
+	}
     private boolean isFree(int x,int y){
+	if(maze[x][y]=='E'){
+	    //System.out.println("Yooooo");
+	    return true;
+	}
 	if(maze[x][y]==' '){
 	    maze[x][y]='@';
 	    return true;
 	}
+
 	return false;
     }
     private boolean branch(int x, int y){
 	if(isFree(x,y)){
-	    solve(x,y);
+	    if(solve(x,y)){
+		return true;
+	    }else{
+		maze[x][y]='.';
+	    }
 	}
+	return false;
     }
 
     //FREE STUFF!!! *you should be aware of this*
