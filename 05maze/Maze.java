@@ -20,24 +20,33 @@ public class Maze{
     */
     public Maze(String filename, boolean ani){
 	animate = ani;	
+        startx = -1;
+	starty = -1;
 	try{
 	File f1 = new File(filename);
 	Scanner s1 = new Scanner(f1);
 	String currentLine = "";
 	int rows = 0;
-	if(s1.hasNextLine()){
+	int n = 0;
+	while(s1.hasNextLine()){
+	    //n++;
 	    currentLine = s1.nextLine();
-	    System.out.println(currentLine);
+	    //System.out.println(currentLine);
 	    rows+=1;
+	    //System.out.println(n);
 	}
 	maze = new char[rows][currentLine.length()];
-	Scanner s2 = new Scanner(filename);
+	Scanner s2 = new Scanner(f1);
 	int row = 0;
 	while(s2.hasNextLine()){
 	    currentLine = s2.nextLine();
-	    System.out.println(currentLine);
+	    //System.out.println(currentLine);
 	    for(int i = 0;i<currentLine.length();i++){
 		maze[row][i]=currentLine.charAt(i);
+		if(maze[row][i]=='S'){
+		    startx = row;
+		    starty = i;
+		}
 	    }
 	    row++;
 	}}catch(FileNotFoundException e){
@@ -83,7 +92,19 @@ public class Maze{
         }
 
         //COMPLETE SOLVE
-        return false; //so it compiles
+	if(maze[x][y]=='E'){
+	    return true;
+	}
+	if(maze[x][y]!=' '){
+	    maze[x][y]='.';
+	    return false;
+	}
+	maze[x][y]='@';
+	return solve(x+1,y)||
+	   solve(x-1,y)||
+	   solve(x,y+1)||
+	   solve(x,y-1);
+        //so it compiles
     }
 
 
