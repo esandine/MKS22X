@@ -95,15 +95,19 @@ public class Maze{
 	if(maze[x][y]=='E'){
 	    return true;
 	}
-	if(maze[x][y]!=' '){
+	if(!((maze[x+1][y]==' ')||
+	   (maze[x-1][y]==' ')||
+	   (maze[x][y+1]==' ')||
+	     (maze[x][y-1]==' '))){
 	    maze[x][y]='.';
+	    System.out.println("Dot me");
 	    return false;
 	}
 	maze[x][y]='@';
 	return solve(x+1,y)||
 	   solve(x-1,y)||
 	   solve(x,y+1)||
-	   solve(x,y-1);
+	    solve(x,y-1);
         //so it compiles
     }
 

@@ -92,18 +92,22 @@ public class Maze{
         }
 
         //COMPLETE SOLVE
-	if(maze[startx][starty]=='E'){
+	if(maze[x][y]=='E'){
 	    return true;
 	}
-	if(maze[startx][starty]!=' '){
-	    maze[startx][starty]='.';
+	if(!((maze[x+1][y]==' ')||
+	   (maze[x-1][y]==' ')||
+	   (maze[x][y+1]==' ')||
+	     (maze[x][y-1]==' '))){
+	    maze[x][y]='.';
+	    System.out.println("Dot me");
 	    return false;
 	}
-	maze[startx][starty]='@';
-	return solve(startx+1,starty)||
-	   solve(startx-1,starty)||
-	   solve(startx,starty+1)||
-	   solve(startx,starty-1);
+	maze[x][y]='@';
+	return solve(x+1,y)||
+	   solve(x-1,y)||
+	   solve(x,y+1)||
+	    solve(x,y-1);
         //so it compiles
     }
 
