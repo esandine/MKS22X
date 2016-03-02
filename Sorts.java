@@ -89,24 +89,27 @@ public class Sorts{
 	int bindex = startB;
 	int index = startA;
 	while((aindex<=endA)&&(bindex<=endB)){
-	    //System.out.println(startA);
 	    if(dataOld[aindex]<dataOld[bindex]){
 		dataNew[index]=dataOld[aindex];
 		aindex++;
+		//System.out.println(dataNew[index]);
 	    }else{
 		dataNew[index]=dataOld[bindex];
 		bindex++;
+		//System.out.println(dataNew[index]);
 	    }
 	    index++;
 	}
 	while(aindex<=endA){
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
+	    System.out.println(dataNew[index]);
 	    index++;
 	}
 	while(bindex<=endB){
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
+		System.out.println(dataNew[index]);
 	    index++;
 	}
     }
