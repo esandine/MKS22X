@@ -1,2 +1,78 @@
+import java.io.*;
+import java.util.*;
 public class Silver{
+    private boolean debug  = true;
+    private char[][] data;
+    private int R1;
+    private int C1;
+    private int R2;
+    private int C2;
+    private int time;
+    public Silver(String filename){
+	data = new char[0][0];
+	R1 = 0;
+	R2 = 0;
+	C1 = 0;
+	C2 = 0;
+	time = 0;
+	try{
+	    int rows = 0;
+	    int cols = 0;
+	    File f1 = new File(filename);
+	    Scanner s1 = new Scanner(f1);
+	    String currentLine = "";
+	    if(s1.hasNextLine()){
+		currentLine = s1.nextLine();
+		int index = 0;
+		boolean first = true;
+		while(index<currentLine.length()){
+		    if(currentLine.charAt(index)==' '){
+			if(first){
+			    rows = Integer.parseInt(currentLine.substring(0,index));
+			    currentLine=currentLine.substring(0,index+1);
+			    index = 0;
+			    first  = false;
+			    debug("First time passedc");
+			}else{
+			    cols = Integer.parseInt(currentLine.substring(0,index));
+			    time = Integer.parseInt(currentLine.substring(index));
+			    index = currentLine.length();
+			}
+		    }else{
+			index++;
+		    }
+		    
+		}
+	    }/*
+	    maze = new char[currentLine.length()][rows];
+	    Scanner s2 = new Scanner(f1);
+	    int row = 0;
+	    while(s2.hasNextLine()){
+		currentLine = s2.nextLine();
+		//System.out.println(currentLine);
+		for(int i = 0;i<currentLine.length();i++){
+		    maze[i][row]=currentLine.charAt(i);
+		    if(maze[i][row]=='S'){
+			starty = row;
+			startx = i;
+		    }
+		}
+		row++;
+		}*/
+	}catch(FileNotFoundException e){
+	    System.out.println("no file found");
+	}
+    }
+    public int getTime(){
+	return time;
+    }
+    public static void main(String[]args){
+	Silver s1 = new Silver("ctravel.in");
+	System.out.println(s1.getTime());
+    }
+    public void debug(Object o){
+	if(debug){
+	    System.out.println(o);
+	}
+    }
 }
