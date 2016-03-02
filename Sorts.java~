@@ -85,34 +85,39 @@ public class Sorts{
 	}
     }
     public static void merge(int[]dataOld,int[]dataNew,int startA,int endA,int startB,int endB){
+	int aindex = startA;
+	int bindex = startB;
 	int index = startA;
-	while((startA<=endA)&&(startB<=endB)){
-	    //System.out.println(startA);
-	    if(dataOld[startA]<dataOld[startB]){
-		dataNew[index]=dataOld[startA];
-		startA++;
+	while((aindex<=endA)&&(bindex<=endB)){
+	    if(dataOld[aindex]<dataOld[bindex]){
+		dataNew[index]=dataOld[aindex];
+		aindex++;
+		//System.out.println(dataNew[index]);
 	    }else{
-		dataNew[index]=dataOld[startB];
-		startB++;
+		dataNew[index]=dataOld[bindex];
+		bindex++;
+		//System.out.println(dataNew[index]);
 	    }
 	    index++;
 	}
-	while(startA<=endA){
-	    dataNew[index]=dataOld[startA];
-	    startA++;
+	while(aindex<=endA){
+	    dataNew[index]=dataOld[aindex];
+	    aindex++;
+	    System.out.println(dataNew[index]);
 	    index++;
 	}
-	while(startB<=endB){
-	    dataNew[index]=dataOld[startB];
-	    startB++;
+	while(bindex<=endB){
+	    dataNew[index]=dataOld[bindex];
+	    bindex++;
+		System.out.println(dataNew[index]);
 	    index++;
 	}
     }
-    public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){
+    public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){/*
 	if(data.length==1){
 	    return data;
 	}else if(ctr/2 == 0){
-	    return merge(data,data2,0,data.length/2,data.length/2+1,data.length
+	return merge(data,data2,0,data.length/2,data.length/2+1,data.length);*/
     }
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){

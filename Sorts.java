@@ -94,8 +94,10 @@ public class Sorts{
 		aindex++;
 		//System.out.println(dataNew[index]);
 	    }else{
+		System.out.println(dataOld[aindex]);
 		dataNew[index]=dataOld[bindex];
 		bindex++;
+		System.out.println(dataOld[aindex]);
 		//System.out.println(dataNew[index]);
 	    }
 	    index++;
@@ -103,13 +105,13 @@ public class Sorts{
 	while(aindex<=endA){
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
-	    System.out.println(dataNew[index]);
+	    //System.out.println(dataNew[index]);
 	    index++;
 	}
 	while(bindex<=endB){
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
-		System.out.println(dataNew[index]);
+	    //System.out.println(dataNew[index]);
 	    index++;
 	}
     }
