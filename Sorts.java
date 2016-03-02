@@ -1,5 +1,5 @@
 public class Sorts{
-    private static boolean debug = false;
+    private static boolean debug = true;
     public static void printArray(int[]data){
 	String retStr="";
 	retStr+="[";
@@ -86,25 +86,34 @@ public class Sorts{
     }
     public static void merge(int[]dataOld,int[]dataNew,int startA,int endA,int startB,int endB){
 	int aindex = startA;
+	//debug(aindex);
 	int bindex = startB;
 	int index = startA;
 	while((aindex<=endA)&&(bindex<=endB)){
 	    if(dataOld[aindex]<dataOld[bindex]){
 		dataNew[index]=dataOld[aindex];
 		aindex++;
+		debug("a");
 		//System.out.println(dataNew[index]);
 	    }else{
-		System.out.println(dataOld[aindex]);
+		//System.out.println(dataOld[aindex]);
 		dataNew[index]=dataOld[bindex];
 		bindex++;
-		System.out.println(dataOld[aindex]);
+		debug("b");
+		//System.out.println(dataOld[aindex]);
 		//System.out.println(dataNew[index]);
 	    }
 	    index++;
 	}
+	//debug(aindex);
+	//debug(bindex);
+	//debug(index);
+	printArray(dataOld);
+	printArray(dataNew);
 	while(aindex<=endA){
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
+	    debug("afinish");
 	    //System.out.println(dataNew[index]);
 	    index++;
 	}
@@ -112,6 +121,7 @@ public class Sorts{
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
 	    //System.out.println(dataNew[index]);
+	    debug("bfinish");
 	    index++;
 	}
     }
@@ -130,5 +140,10 @@ public class Sorts{
 	int storage = data[i2];
 	data[i2]=data[i1];
 	data[i1]=storage;
+    }
+    public static void debug(Object o){
+	if(debug){
+	    System.out.println(o);
+	}
     }
 }
