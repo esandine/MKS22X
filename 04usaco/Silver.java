@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 public class Silver{
-    private static boolean debug  = true;
+    private static boolean debug  = false;
     private char[][] data;
     private int R1;
     private int C1;
@@ -95,7 +95,7 @@ public class Silver{
 	int[][] retBoard = new int[board.length][board[0].length];
 	for(int r = 0;r<board.length;r++){
 	    for(int c = 0;c<board[r].length;c++){
-		retBoard[r][c]=0;
+		if(board[r][c]!=-1){
 		if((c>0) && (board[r][c-1]!=-1)){
 		    retBoard[r][c]+=board[r][c-1];
 		}
@@ -108,12 +108,16 @@ public class Silver{
 		if((r<board.length-1) && (board[r+1][c]!=-1)){
 		    retBoard[r][c]+=board[r+1][c];
 		}
+		}else{
+		    retBoard[r][c]= -1;
+		}
 	    }
 	}
 	return retBoard;
     }
     public int[][] toIntArray(){
-	int[][] retBoard = new int[data.length][data[0].length];
+	int[][] retBoard 
+= new int[data.length][data[0].length];
 	for(int r = 0;r<data.length;r++){
 	    for(int c = 0;c<data[0].length;c++){
 		if(data[r][c]=='*'){
@@ -149,15 +153,27 @@ public class Silver{
     public int getTime(){
 	return time;
     }
+    public int solve(){
+	int [][] board = toIntArray();
+	printData(board);
+	for(int i = 0;i<time;i++){
+	    board = solveIter(board);
+	    printData(board);
+	}
+	return board[R2-1][C2-1];
+    }
     public static void main(String[]args){
 	Silver s1 = new Silver("ctravel.in");
-	System.out.println(s1.getTime());
-	debug(s1.R1);
+	/*debug(s1.R1);
 	debug(s1.C1);
 	debug(s1.R2);
 	debug(s1.C2);
 	printData(s1.data);
-	printData(s1.toIntArray());
+	printData(s1.toIntArray());*/
+	String retStr = "";
+	retStr+=s1.solve();
+	retStr+=",Sandine,Ely,6";
+	System.out.println(retStr);
     }
     public static void debug(Object o){
 	if(debug){
