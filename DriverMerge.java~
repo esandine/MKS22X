@@ -1,0 +1,9 @@
+public class DriverMerge{
+    public static void main(String[]args){
+	int [] data = new int{3,5,4,6};
+	Sorts.printArray(data);
+	int [] data2 = new int[4];
+	Sorts.merge(data,data2,0,1,2,3);
+	Sorts.printArray(data2);
+    }
+}
