@@ -85,24 +85,65 @@ public class Silver{
 			index++;
 		    }
 		}
-	    }/*
-	    maze = new char[currentLine.length()][rows];
-	    Scanner s2 = new Scanner(f1);
-	    int row = 0;
-	    while(s2.hasNextLine()){
-		currentLine = s2.nextLine();
-		//System.out.println(currentLine);
-		for(int i = 0;i<currentLine.length();i++){
-		    maze[i][row]=currentLine.charAt(i);
-		    if(maze[i][row]=='S'){
-			starty = row;
-			startx = i;
-		    }
-		}
-		row++;
-		}*/
+	    }
 	}catch(FileNotFoundException e){
 	    System.out.println("no file found");
+	}
+    }
+    public int[][] solveIter(int[][] board){
+	int val = 0;
+	int[][] retBoard = new int[board.length][board[0].length];
+	for(int r = 0;r<board.length;r++){
+	    for(int c = 0;c<board[r].length;c++){
+		retBoard[r][c]=0;
+		if((c>0) && (board[r][c-1]!=-1)){
+		    retBoard[r][c]+=board[r][c-1];
+		}
+		if((c<board[r].length-1) && (board[r][c+1]!=-1)){
+		    retBoard[r][c]+=board[r][c+1];
+		}
+		if((r>0) && (board[r-1][c]!=-1)){
+		    retBoard[r][c]+=board[r-1][c];
+		}
+		if((r<board.length-1) && (board[r+1][c]!=-1)){
+		    retBoard[r][c]+=board[r+1][c];
+		}
+	    }
+	}
+	return retBoard;
+    }
+    public int[][] toIntArray(){
+	int[][] retBoard = new int[data.length][data[0].length];
+	for(int r = 0;r<data.length;r++){
+	    for(int c = 0;c<data[0].length;c++){
+		if(data[r][c]=='*'){
+		    retBoard[r][c]=-1;
+		}else{
+		    retBoard[r][c]=0;
+		}
+	    }
+	}
+	retBoard[R1-1][C1-1]=1;
+	return retBoard;
+    }
+    public static void printData(char[][] data){
+	String current = "";
+	for(int r = 0;r<data.length;r++){
+	    current = "";
+	    for(int c = 0;c<data[0].length;c++){
+		current+=data[r][c];
+	    }
+	    debug(current);
+	}
+    }
+    public static void printData(int[][] data){
+	String current = "";
+	for(int r = 0;r<data.length;r++){
+	    current = "";
+	    for(int c = 0;c<data[0].length;c++){
+		current+=data[r][c];
+	    }
+	    debug(current);
 	}
     }
     public int getTime(){
@@ -115,6 +156,8 @@ public class Silver{
 	debug(s1.C1);
 	debug(s1.R2);
 	debug(s1.C2);
+	printData(s1.data);
+	printData(s1.toIntArray());
     }
     public static void debug(Object o){
 	if(debug){
