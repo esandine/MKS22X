@@ -1,5 +1,5 @@
 public class Sorts{
-    private static boolean debug = false;
+    private static boolean debug = true;
     public static void printArray(int[]data){
 	String retStr="";
 	retStr+="[";
@@ -84,25 +84,42 @@ public class Sorts{
 
 	}
     }
-    public static void merge(int[]dataOld,int[]dataNew,int startA,int endA,int startB,int endB){
+    public static int[] merge(int[]dataOld,int startA,int endA,int startB,int endB){
 	int aindex = startA;
+      	//debug(aindex);
 	int bindex = startB;
 	int index = startA;
+	int[] dataNew = new int[dataOld.length];
 	while((aindex<=endA)&&(bindex<=endB)){
 	    if(dataOld[aindex]<dataOld[bindex]){
 		dataNew[index]=dataOld[aindex];
 		aindex++;
+		//debug("a");
 		//System.out.println(dataNew[index]);
 	    }else{
-		System.out.println(dataOld[aindex]);
+		//System.out.println(dataOld[aindex]);
 		dataNew[index]=dataOld[bindex];
 		bindex++;
-		System.out.println(dataOld[aindex]);
+		//debug("b");
+		//System.out.println(dataOld[aindex]);
 		//System.out.println(dataNew[index]);
 	    }
-	    index++;
+	    if(index==endA+1){
+		index=startB;
+		debug("Make the leap");
+	    }else{
+		index++;
+	    }
 	}
+	//debug(aindex);
+	//debug(bindex);
+	//debug(index);
+	//printArray(dataOld);
+	//printArray(dataNew);
 	while(aindex<=endA){
+    	    //debug("afinish");
+	    //debug(aindex);
+	    //debug(index);
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
 	    //System.out.println(dataNew[index]);
@@ -112,8 +129,18 @@ public class Sorts{
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
 	    //System.out.println(dataNew[index]);
+	    //debug("bfinish");
 	    index++;
 	}
+	for(int i = 0;i<dataOld.length;i++){
+	    if((i<startA)||
+	       ((i>startA+1)&&(i<startB))||
+	       (i>startB)){
+		debug(dataOld[i]);
+	    dataNew[i]=dataOld[i];
+	    }
+	}
+	return dataNew;
     }
     public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){/*
 	if(data.length==1){
@@ -130,5 +157,10 @@ public class Sorts{
 	int storage = data[i2];
 	data[i2]=data[i1];
 	data[i1]=storage;
+    }
+    public static void debug(Object o){
+	if(debug){
+	    System.out.println(o);
+	}
     }
 }
