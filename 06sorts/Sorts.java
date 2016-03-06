@@ -134,11 +134,24 @@ public class Sorts{
 	}
 	return dataNew;
     }
-    public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){/*
-	if(data.length==1){
-	    return data;
-	}else if(ctr/2 == 0){
-	return merge(data,data2,0,data.length/2,data.length/2+1,data.length);*/
+    public static void mergeSort(int[] data){
+	int delemeter = 1;
+	while(delemeter<data.length){
+	    debug(delemeter);
+	    for(int i = 0;i+delemeter+1<data.length;i+=(delemeter+1)){
+		if(delemeter%2==0){
+		    data = merge(data,i,i+delemeter/2,i+delemeter/2+1,i+delemeter+1);
+		}else{
+		    data = merge(data,i,i+delemeter/2,i+delemeter/2+1,i+delemeter);
+		}
+		printArray(data);
+		//debug(i);
+	    }
+	    debug("Last One");
+	    data=merge(data,data.length-delemeter-1,data.length-delemeter/2-2,data.length-delemeter/2-1,data.length-1);
+	    printArray(data);
+	    delemeter*=2;
+	}    
     }
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){
