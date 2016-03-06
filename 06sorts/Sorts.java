@@ -92,11 +92,21 @@ public class Sorts{
 	int[] dataNew = new int[dataOld.length];
 	while((aindex<=endA)&&(bindex<=endB)){
 	    if(dataOld[aindex]<dataOld[bindex]){
+		/*if((index>endA)&&(index<startB)){
+		    debug(aindex);
+		    debug(index);
+		    dataNew[index+aindex]=dataOld[index];
+		    }*/
 		dataNew[index]=dataOld[aindex];
 		aindex++;
 		//debug("a");
 		//System.out.println(dataNew[index]);
 	    }else{
+		/*if((bindex>endA)&&(index<startB)){
+		    debug(bindex);
+		    debug(index);
+		    dataNew[index+bindex]=dataOld[index];
+		    }*/
 		//System.out.println(dataOld[aindex]);
 		dataNew[index]=dataOld[bindex];
 		bindex++;
@@ -104,12 +114,18 @@ public class Sorts{
 		//System.out.println(dataOld[aindex]);
 		//System.out.println(dataNew[index]);
 	    }
+	    index++;
 	    if(index==endA+1){
-		index=startB;
-		debug("Make the leap");
-	    }else{
+		while(index<startB){
+		    dataNew[index]=dataOld[index];
+		    index++;
+		}
+		debug("Make the leap first");
+		debug(index);
+	    }/*else{
+		debug("no leap");
 		index++;
-	    }
+		}*/
 	}
 	//debug(aindex);
 	//debug(bindex);
@@ -124,6 +140,17 @@ public class Sorts{
 	    aindex++;
 	    //System.out.println(dataNew[index]);
 	    index++;
+	    if(index==endA+1){
+		while(index<startB){
+		    dataNew[index]=dataOld[index];
+		    index++;
+		}
+		debug(index);
+		debug("Make the leap  A");
+	    }/*else{
+		debug("no leap");
+		index++;
+		}*/
 	}
 	while(bindex<=endB){
 	    dataNew[index]=dataOld[bindex];
@@ -131,15 +158,24 @@ public class Sorts{
 	    //System.out.println(dataNew[index]);
 	    //debug("bfinish");
 	    index++;
-	}
+	    if(index==endA+1){
+		while(index<startB){
+		    dataNew[index]=dataOld[index];
+		    index++;
+		}
+		debug("Make the leap B");
+		debug(index);
+	    }/*else{
+		debug("no leap");
+		index++;
+		}*/
+	}/*
 	for(int i = 0;i<dataOld.length;i++){
-	    if((i<startA)||
-	       ((i>startA+1)&&(i<startB))||
-	       (i>startB)){
-		debug(dataOld[i]);
-	    dataNew[i]=dataOld[i];
+	    if(dataNew[i]==0){
+		//debug(dataOld[i]);
+		dataNew[i]=dataOld[i];
 	    }
-	}
+	    }*/
 	return dataNew;
     }
     public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){/*
