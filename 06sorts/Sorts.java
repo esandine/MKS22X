@@ -86,33 +86,16 @@ public class Sorts{
     }
     public static int[] merge(int[]dataOld,int startA,int endA,int startB,int endB){
 	int aindex = startA;
-      	//debug(aindex);
 	int bindex = startB;
 	int index = startA;
 	int[] dataNew = new int[dataOld.length];
 	while((aindex<=endA)&&(bindex<=endB)){
 	    if(dataOld[aindex]<dataOld[bindex]){
-		/*if((index>endA)&&(index<startB)){
-		    debug(aindex);
-		    debug(index);
-		    dataNew[index+aindex]=dataOld[index];
-		    }*/
 		dataNew[index]=dataOld[aindex];
 		aindex++;
-		//debug("a");
-		//System.out.println(dataNew[index]);
 	    }else{
-		/*if((bindex>endA)&&(index<startB)){
-		    debug(bindex);
-		    debug(index);
-		    dataNew[index+bindex]=dataOld[index];
-		    }*/
-		//System.out.println(dataOld[aindex]);
 		dataNew[index]=dataOld[bindex];
 		bindex++;
-		//debug("b");
-		//System.out.println(dataOld[aindex]);
-		//System.out.println(dataNew[index]);
 	    }
 	    index++;
 	    if(index==endA+1){
@@ -120,59 +103,32 @@ public class Sorts{
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-		debug("Make the leap first");
-		debug(index);
-	    }/*else{
-		debug("no leap");
-		index++;
-		}*/
+	    }
 	}
-	//debug(aindex);
-	//debug(bindex);
-	//debug(index);
-	//printArray(dataOld);
-	//printArray(dataNew);
 	while(aindex<=endA){
-    	    //debug("afinish");
-	    //debug(aindex);
-	    //debug(index);
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
-	    //System.out.println(dataNew[index]);
 	    index++;
 	    if(index==endA+1){
 		while(index<startB){
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-		debug(index);
-		debug("Make the leap  A");
-	    }/*else{
-		debug("no leap");
-		index++;
-		}*/
+	    }
 	}
 	while(bindex<=endB){
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
-	    //System.out.println(dataNew[index]);
-	    //debug("bfinish");
 	    index++;
 	    if(index==endA+1){
 		while(index<startB){
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-		debug("Make the leap B");
-		debug(index);
-	    }/*else{
-		debug("no leap");
-		index++;
-		}*/
+	    }
 	}
 	for(int i = 0;i<dataOld.length;i++){
-	    if(dataNew[i]==0){
-		//debug(dataOld[i]);
+	    if((i<startA)||(i>endB)){
 		dataNew[i]=dataOld[i];
 	    }
 	}
