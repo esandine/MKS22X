@@ -4,11 +4,11 @@ public class DriverMerge{
 	Sorts.printArray(data);
 	int [] data2 = data;
 	Sorts.printArray(data2);
-	Sorts.merge(data,data2,0,0,1,1);
+	data2=Sorts.merge(data,0,0,2,2);
 	Sorts.printArray(data2);
-	Sorts.merge(data,data2,2,2,3,3);
+	data2=Sorts.merge(data,2,2,3,3);
 	Sorts.printArray(data2);
-	Sorts.merge(data2,data,0,1,2,3);
+	data=Sorts.merge(data2,0,1,2,3);
 	Sorts.printArray(data);
     }
 }

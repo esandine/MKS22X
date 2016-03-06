@@ -169,13 +169,13 @@ public class Sorts{
 		debug("no leap");
 		index++;
 		}*/
-	}/*
+	}
 	for(int i = 0;i<dataOld.length;i++){
 	    if(dataNew[i]==0){
 		//debug(dataOld[i]);
 		dataNew[i]=dataOld[i];
 	    }
-	    }*/
+	}
 	return dataNew;
     }
     public static void mergeSortIter(int[] data, int data2, int startA, int endA, int StartB, int endB, int ctr){/*
