@@ -138,7 +138,7 @@ public class Sorts{
 	int delemeter = 1;
 	while(delemeter<data.length){
 	    debug(delemeter);
-	    for(int i = 0;i+delemeter+1<data.length;i+=(delemeter+1)){
+	    for(int i = 0;i+delemeter+1<data.length;i+=(delemeter*2)){
 		if(delemeter%2==0){
 		    data = merge(data,i,i+delemeter/2,i+delemeter/2+1,i+delemeter+1);
 		}else{
@@ -148,10 +148,14 @@ public class Sorts{
 		//debug(i);
 	    }
 	    debug("Last One");
-	    data=merge(data,data.length-delemeter-1,data.length-delemeter/2-2,data.length-delemeter/2-1,data.length-1);
+	    debug(delemeter);
+	    data=merge(data,data.length-delemeter,data.length-delemeter/2-1,data.length-delemeter/2,data.length-1);
 	    printArray(data);
 	    delemeter*=2;
-	}    
+	}
+	debug("veryLast");
+	merge(data,0,data.length/2-1,data.length/2,data.length-1);
+	printArray(data);
     }
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){
