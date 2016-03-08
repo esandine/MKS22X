@@ -170,7 +170,7 @@ public class Sorts{
 	    d*=2;
 	}
     }
-    public static void mergeSort(int[] data){
+    public static void mergesort(int[] data){
 	int delemeter = 1;
 	while(delemeter<data.length){
 	    debug(delemeter);
