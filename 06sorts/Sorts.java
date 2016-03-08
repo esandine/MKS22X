@@ -134,6 +134,42 @@ public class Sorts{
 	}
 	return dataNew;
     }
+    public static void mergeSort2(int[] data){
+	int d = 1;
+	while(d<data.length){
+	    int i = 0;
+	    for(i = 0;i+d<data.length;i+=2*d){
+		//debug(i+d+(data.length-d-i)/2+1);
+		if((i+d)>data.length){
+		    debug("Yoyoyoyoy");
+		    debug(i+d);
+		    data=merge(data,i+d,i+d+(data.length-i-d-1)/2,
+			       i+d+(data.length-i-d)/2,data.length-1);
+		    printArray(data);
+		}else{
+		debug(i);
+		debug(d);
+		if(d==2){
+		    data=merge(data,i,i+d/2,i+d/2+1,i+d+1);
+		}else if(d==1){
+		    data=merge(data,i,i+d/2,i+d/2+1,i+d);
+		}else{
+		    data=merge(data,i,i+d-1,i+d,i+2*d-1);
+		}
+		printArray(data);}
+	    }
+	    debug("final");
+	    debug(i);
+	    /*if(d==1){
+		data=merge(data,i,i+(data.length-i)/2,i+(data.length-i)/2+1,data.length-1);
+	    }else if(d==2){
+		data=merge(data,i,i+(data.length-i)/2,i+(data.length-i)/2+1,data.length-1);
+	    }else{
+		data=merge(data,i,i+(data.length-i)/2,i+(data.length-i)/2+1,data.length-1);
+		}*/
+	    d*=2;
+	}
+    }
     public static void mergeSort(int[] data){
 	int delemeter = 1;
 	while(delemeter<data.length){
