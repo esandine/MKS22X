@@ -171,6 +171,18 @@ public class Sorts{
 	}
     }
     public static void mergesort(int[] data){
+	mergesort(data,0,data.length-1);
+    }
+    public static void mergesort(int[] data,left,right){
+	if(data.length>1){
+	    int[] array1 = new int[0];
+	    int[] array2 = new int[0];
+	    array1 = mergesort(data,left,(left+right)/2);
+	    array2 = mergesort(data,(left+right)/2,right);
+	    data=merge(data,left,right);
+	}
+    }
+	/*    public static void mergesort(int[] data){
 	int delemeter = 1;
 	while(delemeter<data.length){
 	    debug(delemeter);
@@ -192,7 +204,7 @@ public class Sorts{
 	debug("veryLast");
 	merge(data,0,data.length/2-1,data.length/2,data.length-1);
 	printArray(data);
-    }
+	}*/
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){
 	    data[i]=(int)(Integer.MAX_VALUE*Math.random());
