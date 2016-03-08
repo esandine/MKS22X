@@ -140,7 +140,7 @@ public class Sorts{
 	    int i = 0;
 	    for(i = 0;i+d<data.length;i+=2*d){
 		//debug(i+d+(data.length-d-i)/2+1);
-		if((i+d)>data.length){
+		if((i+2d)>data.length){
 		    debug("Yoyoyoyoy");
 		    debug(i+d);
 		    data=merge(data,i+d,i+d+(data.length-i-d-1)/2,
