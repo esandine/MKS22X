@@ -111,7 +111,6 @@ public class Sorts{
 	    }
 	}
 	while(aindex<=endA){
-	    if(index<dataOld.length){
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
 	    index++;
@@ -120,12 +119,9 @@ public class Sorts{
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-	    }else{
-		aindex=endA+1;
-	    }}
+	    }
 	}
 	while(bindex<=endB){
-	    if(index<dataOld.length){
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
 	    index++;
@@ -134,8 +130,6 @@ public class Sorts{
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-	    }}else{
-		bindex=endB+1;
 	    }
 	}
 	for(int i = 0;i<dataOld.length;i++){
@@ -185,7 +179,7 @@ public class Sorts{
 	data=mergesort(data,0,data.length-1);
 	printArray(data);
     }
-    public static int[]  mergesort(int[] data,int left,int right){
+    public static int[] mergesort(int[]data,int left,int right){
 	if(left==right){
 	    return data;
 	}

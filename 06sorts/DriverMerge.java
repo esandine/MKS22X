@@ -3,7 +3,7 @@ public class DriverMerge{
 	int [] data = {6,5,4,3,45,23,2,1,5,6,6,6,8,};
 	int[] tester = {5,6,3,4};
 	Sorts.printArray(tester);
-	tester = Sorts.merge(tester,3,3,3,3);
+	tester = Sorts.merge(data,6,9,9,12);
 	Sorts.printArray(tester);
 	System.out.println("Done testing");
 	Sorts.printArray(data);

@@ -89,6 +89,11 @@ public class Sorts{
 	int bindex = startB;
 	int index = startA;
 	int[] dataNew = new int[dataOld.length];
+	if((startA==endB)
+	   &&(startA==startB)
+	   &&(startA==endA)){
+	    return dataOld;
+	}
 	while((aindex<=endA)&&(bindex<=endB)){
 	    if(dataOld[aindex]<dataOld[bindex]){
 		dataNew[index]=dataOld[aindex];
@@ -106,6 +111,7 @@ public class Sorts{
 	    }
 	}
 	while(aindex<=endA){
+	    if(index<dataOld.length){
 	    dataNew[index]=dataOld[aindex];
 	    aindex++;
 	    index++;
@@ -114,9 +120,12 @@ public class Sorts{
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
-	    }
+	    }else{
+		aindex=endA+1;
+	    }}
 	}
 	while(bindex<=endB){
+	    if(index<dataOld.length){
 	    dataNew[index]=dataOld[bindex];
 	    bindex++;
 	    index++;
@@ -125,13 +134,15 @@ public class Sorts{
 		    dataNew[index]=dataOld[index];
 		    index++;
 		}
+	    }}else{
+		bindex=endB+1;
 	    }
 	}
 	for(int i = 0;i<dataOld.length;i++){
 	    if((i<startA)||(i>endB)){
 		dataNew[i]=dataOld[i];
 	    }
-	}
+	} 
 	return dataNew;
     }
     public static void mergeSort2(int[] data){
@@ -171,16 +182,19 @@ public class Sorts{
 	}
     }
     public static void mergesort(int[] data){
-	mergesort(data,0,data.length-1);
+	data=mergesort(data,0,data.length-1);
+	printArray(data);
     }
-    public static void mergesort(int[] data,left,right){
-	if(data.length>1){
-	    int[] array1 = new int[0];
-	    int[] array2 = new int[0];
-	    array1 = mergesort(data,left,(left+right)/2);
-	    array2 = mergesort(data,(left+right)/2,right);
-	    data=merge(data,left,right);
+    public static int[]  mergesort(int[] data,int left,int right){
+	if(left==right){
+	    return data;
 	}
+	data = mergesort(data,left,(left+right)/2);
+	data = mergesort(data,(left+right+1)/2,right);
+	debug(left);
+	debug(right);
+	printArray(data);
+	return merge(data,left,(left+right)/2,(left+right+1)/2,right);
     }
 	/*    public static void mergesort(int[] data){
 	int delemeter = 1;
