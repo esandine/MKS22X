@@ -142,7 +142,7 @@ public class Sorts{
 	    if((i<startA)||(i>endB)){
 		dataNew[i]=dataOld[i];
 	    }
-	}
+	} 
 	return dataNew;
     }
     public static void mergeSort2(int[] data){
