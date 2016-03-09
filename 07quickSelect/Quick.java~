@@ -21,6 +21,19 @@ public class Quick{
 	data[tempRight+1]=value;
 	return tempRight+1;
     }
+    public static int quickselect(int[]data,int k){
+	return quickselect(data,k,0,data.length-1);
+    }
+    private static int quickselect(int[]data,int k,int left,int right){
+	int i = partition(data,left,right);
+	if(i==k){
+	    return data[k];
+	}else if(i>k){
+	    return quickselect(data,k,left,i-1);
+	}else{
+	    return quickselect(data,k,i+1,right);
+	}
+    }
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){
             data[i]=(int)(Integer.MAX_VALUE*Math.random());
@@ -52,11 +65,6 @@ public class Quick{
     }
     public static void main(String[]args){
 	int[]data={3,4,-5,6,5,89,7,55,87,-15};
-	printArray(data);
-	System.out.println(partition(data,0,data.length-1));
-	printArray(data);
-	for(int i = 0;i<1;i++){
-	    
-	}
+	System.out.println(quickselect(data,4));
     }
 }

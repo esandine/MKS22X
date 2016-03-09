@@ -14,7 +14,7 @@ public class Quick{
 		tempLeft+=1;
 	    }
 	}
-	printArray(data);
+	//printArray(data);
 	for(int i = right;i>1+tempRight;i--){
 	    data[i]=data[i-1];
 	}
@@ -32,6 +32,19 @@ public class Quick{
 	    return quickselect(data,k,left,i-1);
 	}else{
 	    return quickselect(data,k,i+1,right);
+	}
+    }
+    public static String name(){
+	return "6,Sandine,Ely"; //e.g. "7,Kim,Bob"
+    }
+    public static void quickSort(int[]data){
+	quickSort(data,0,data.length-1);
+    }
+    private static void quickSort(int[]data,int left,int right){
+	if(left<right){
+	    int i = partition(data,left,right);
+	    quickSort(data,left,i-1);
+	    quickSort(data,i+1,right);
 	}
     }
     public static void fillRandom(int[] data){
@@ -65,6 +78,8 @@ public class Quick{
     }
     public static void main(String[]args){
 	int[]data={3,4,-5,6,5,89,7,55,87,-15};
-	System.out.println(quickselect(data,4));
+	printArray(data);
+	quickSort(data);
+	printArray(data);
     }
 }
