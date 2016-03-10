@@ -1,3 +1,4 @@
+import java.util.*;
 public class Quick{
     private static int partition(int[]data,int left, int right){
 	int randIndex = (int)(Math.random()*(right-left))+left;
@@ -77,8 +78,15 @@ public class Quick{
         System.out.println(retStr);
     }
     public static void main(String[]args){
-	int[]data={3,4,-5,6,5,89,7,55,87,-15};
-	printArray(data);
+	int[]data = new int[4000000];
+	if(args[0]==1){
+	    fillRandom(data);
+	}else{
+	    for(int i = 0;i<data.length;i++){
+		data[i]=(int)Math.random()*4;
+	    }
+	}
+	if(
 	quickSort(data);
 	printArray(data);
     }
