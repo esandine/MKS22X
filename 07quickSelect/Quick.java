@@ -50,31 +50,42 @@ public class Quick{
 	int value = data[randIndex];
 	int tempLeft = left;
 	int tempRight = right;
-	int values = 0;
+	int rightValues = right;
+	//System.out.println(value);
 	//swap(data,randIndex,tempRight);
 	//tempRight-=1;
 	while(tempLeft<=tempRight){
+	    //printArray(data);
+	    //System.out.println(" "+tempLeft+" "+tempRight+" "+rightValues);
 	    if(data[tempLeft]>value){
 		swap(data,tempLeft,tempRight);
 		tempRight-=1;
 	    }else if(data[tempLeft]==value){
-		swap(data,tempLeft,right-values);
-		tempRight-=1;
-		values++;
+		/*System.out.println(rightValues);
+		  System.out.println(tempLeft);*/
+		swap(data,tempLeft,rightValues);
+		rightValues-=1;
+		if(rightValues<=tempRight){
+		    tempRight--;
+		}
 	    }else{
 		tempLeft+=1;
 	    }
+	    //printArray(data);
 	}
-	printArray(data);
-	for(int i = right;i>1+tempRight;i-=values){
-	    data[i]=data[i-values];
-	}
-	for(int i = 0;i<values;i++){
-	    data[tempRight+i+1]=value;
-	}
+	//printArray(data);
+ 	//System.out.println(" "+tempLeft+" "+tempRight+" "+rightValues);
+ 	for(int i = right;i-(right-rightValues)>=tempLeft;i--){
+ 	    data[i]=data[i-(right-rightValues)];
+ 	}
+ 	//printArray(data);
+ 	for(int i = tempLeft;i<tempLeft+right-rightValues;i++){
+ 	    data[i]=value;
+ 	}
+	//printArray(data);
 	int[] retValues = new int[2];
-	retValues[0] = tempRight+1;
-	retValues[1] = tempRight+1+values;
+	retValues[0] = tempLeft;
+	retValues[1] = tempLeft+right-rightValues;
 	return retValues;
     }/*
     public static int quickselect(int[]data,int k){
