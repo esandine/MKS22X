@@ -87,18 +87,18 @@ public class Quick{
 	retValues[0] = tempLeft;
 	retValues[1] = tempLeft+right-rightValues;
 	return retValues;
-    }/*
+    }
     public static int quickselect(int[]data,int k){
 	return quickselect(data,k,0,data.length-1);
     }
     private static int quickselect(int[]data,int k,int left,int right){
-	int i = partition(data,left,right);
-	if(i==k){
+	int[] indices = partition(data,left,right);
+	if((indices[0]<=k)&&(indices[1]>k)){
 	    return data[k];
-	}else if(i>k){
-	    return quickselect(data,k,left,i-1);
+	}else if(indices[0]>k){
+	    return quickselect(data,k,left,indices[0]-1);
 	}else{
-	    return quickselect(data,k,i+1,right);
+	    return quickselect(data,k,indices[1],right);
 	}
     }
     public static String name(){
@@ -109,11 +109,11 @@ public class Quick{
     }
     private static void quickSort(int[]data,int left,int right){
 	if(left<right){
-	    int i = partition(data,left,right);
-	    quickSort(data,left,i-1);
-	    quickSort(data,i+1,right);
+	    int[] indices = partition(data,left,right);
+	    quickSort(data,left,indices[0]-1);
+	    quickSort(data,indices[1],right);
 	}
-	}*/
+    }
     public static void fillRandom(int[] data){
 	for(int i = 0;i<data.length;i++){
             data[i]=(int)(Integer.MAX_VALUE*Math.random());
@@ -146,7 +146,6 @@ public class Quick{
     public static void main(String[]args){
 	int[]data = {4,4,9,9,6,6,3,3,8,4,6};
 	printArray(data);
-	
 	//if(args[0]==1){
 	//    fillRandom(data);
 	//}else{
@@ -155,8 +154,7 @@ public class Quick{
 	//    }
 	//}
 	//if(
-	printArray(partition(data,0,data.length-1));
+	quickSort(data);
 	printArray(data);
-	//printArray(data);
     }
 }
