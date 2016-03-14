@@ -47,6 +47,7 @@ public class Quick{
     }
     private static int[] partition(int[]data,int left, int right){
 	int randIndex = (int)(Math.random()*(right-left))+left;
+	//randIndex = left;
 	int value = data[randIndex];
 	int tempLeft = left;
 	int tempRight = right;
@@ -85,7 +86,7 @@ public class Quick{
 	//printArray(data);
 	int[] retValues = new int[2];
 	retValues[0] = tempLeft;
-	retValues[1] = tempLeft+right-rightValues;
+	retValues[1] = tempLeft+right-rightValues-1;
 	return retValues;
     }
     public static int quickselect(int[]data,int k){
@@ -111,7 +112,7 @@ public class Quick{
 	if(left<right){
 	    int[] indices = partition(data,left,right);
 	    quickSort(data,left,indices[0]-1);
-	    quickSort(data,indices[1],right);
+	    quickSort(data,indices[1]+1,right);
 	}
     }
     public static void fillRandom(int[] data){
@@ -143,9 +144,43 @@ public class Quick{
         retStr+="]";
         System.out.println(retStr);
     }
+    public static boolean checkPartition(int[]data){
+	int[]test = new int[2];
+	test=partition(data,0,data.length-1);
+	int value = data[test[0]];
+	for(int i = 0;i<test[0];i++){
+	    if(data[i]>=value){
+		System.out.println("Left failure");
+		return false;
+	    }
+	}
+	for(int i = test[1]+1;i<data.length;i++){
+	    if(data[i]<=value){
+		System.out.println("Right failure");
+		return false;
+	    }
+	}
+	for(int i = test[0];i<test[1]+1;i++){
+	    if(data[i]!=value){
+		System.out.println("Middle failure");
+		return false;
+	    }
+	}
+	return true;
+    }
+    public static boolean checkQuickselect(int[]data){
+	for(int i = 0;i<data.length;i++){
+	    if(quickselect(data,i)!=quickselectOld(data,i)){
+		return false;
+	    }
+	}
+	return true;
+    }
     public static void main(String[]args){
-	int[]data = {4,4,9,9,6,6,3,3,8,4,6};
-	printArray(data);
+	//int[]data = {4,4,34,3,5,7,9,0,9,9};
+	//System.out.println(checkPartition(data));
+	//printArray(partition(data,0,data.length-1));
+	//printArray(data);
 	//if(args[0]==1){
 	//    fillRandom(data);
 	//}else{
@@ -154,7 +189,36 @@ public class Quick{
 	//    }
 	//}
 	//if(
-	quickSort(data);
-	printArray(data);
+	//System.out.println(checkQuickselect(data));
+	//quickSort(data);
+	//printArray(data);
+	//Arrays.sort(data);
+	//printArray(data);
+	int[] d = new int [4000000];
+	//int[] c = new int [d.length];
+	for(int i = 0; i < d.length; i++){
+	    d[i]= (int)(Math.random()*4);
+	    //c[i]= d[i];
+	}
+	//for(int i = 0;i<100000;i++){
+	//    if(!checkPartition(d)){
+	//	counter++;
+	//	System.out.println(counter);
+	//    }
+	//}
+	//quickSortOld(d); //*or even your old quicksort!!!
+	Arrays.sort(d);
+	//int co = 0;
+	//for(int i = 0; i<d.length;i++){
+	//    if(d[i]!=c[i]){
+	//System.out.println(i);
+		//System.out.println(d[i-1]);
+		//System.out.println(d[i]);
+	//    }
+	//}
+	//printArray(d);
+	//printArray(c);
+	//System.out.println(co);
+	//System.out.println("Done: Sorted="+Arrays.equals(d,c));
     }
 }
