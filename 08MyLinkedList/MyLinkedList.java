@@ -75,4 +75,18 @@ public class MyLinkedList{
 	}
 	return -1;
     }
+    public int set(int index,int newValue){
+	int i = 0;
+	LNode head = start;
+	while(head!=null){
+	    if(i==index){
+		i = head.getValue();
+		head.setValue(newValue);
+		return i;
+	    }
+	    i++;
+	    head=head.getNext();
+	}
+	return -1;
+    }
 }
