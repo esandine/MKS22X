@@ -89,4 +89,24 @@ public class MyLinkedList{
 	}
 	return -1;
     }
+    public int remove(int index){
+	if(index>size()){
+	    throw new IndexOutOfBoundsException();
+	}
+	LNode head = start;
+	int i = 0;
+	if(index==0){
+	    start=start.getNext();
+	}
+	while(head!=null){
+	    if(i == index-1){
+		i = head.getNext().getValue();
+		head.setNext(head.getNext().getNext());
+		return i;
+	    }
+	    head = head.getNext();
+	    i++;
+	}
+	return 0;
+    }
 }

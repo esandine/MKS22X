@@ -12,6 +12,7 @@ public class Driver{
 	l1.set(0,12121212);
 	System.out.println(l1);
 	System.out.println(l1.size());
-	System.out.println(l1.get(2));
+	l1.remove(2);
+	System.out.println(l1);
     }
 }
