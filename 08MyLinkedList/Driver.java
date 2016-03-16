@@ -9,5 +9,7 @@ public class Driver{
 	System.out.println(l1);
 	l1.add(145345);
 	System.out.println(l1);
+	System.out.println(l1.size());
+	System.out.println(l1.get(2));
     }
 }

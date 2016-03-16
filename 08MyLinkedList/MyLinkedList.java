@@ -31,6 +31,9 @@ public class MyLinkedList{
     }
     private LNode start;
     private int size;
+    public int size(){
+	return size;
+    }
     public MyLinkedList(){
 	size = 0;
     }
@@ -52,15 +55,24 @@ public class MyLinkedList{
 	String retStr="[";
 	if(head==null){
 	    return retStr+"]";
-	}/*else{
-	    retStr+=head.getValue();
-	    retStr+=",";
-	    }*/
+	}
 	while(head!=null){
 	    retStr+=head.getValue();
 	    retStr+=",";
 	    head=head.getNext();
 	}
 	return retStr+"]";
+    }
+    public int get(int index){
+	int i = 0;
+	LNode head = start;
+	while(head!=null){
+	    if(i==index){
+		return head.getValue();
+	    }
+	    i++;
+	    head=head.getNext();
+	}
+	return -1;
     }
 }
