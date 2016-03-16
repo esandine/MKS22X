@@ -134,4 +134,16 @@ public class MyLinkedList{
 	}
 	return false;
     }
+    public int indexOf(int value){
+	int index = 0;
+	LNode head=start;
+	while(head!=null){
+	    if(head.getValue()==value){
+		return index;
+	    }
+	    index++;
+	    head=head.getNext();
+	}
+	return -1;
+    }
 }
