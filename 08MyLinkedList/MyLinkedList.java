@@ -64,6 +64,9 @@ public class MyLinkedList{
 	return retStr+"]";
     }
     public int get(int index){
+	if(index>=size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	int i = 0;
 	LNode head = start;
 	while(head!=null){
@@ -90,7 +93,7 @@ public class MyLinkedList{
 	return -1;
     }
     public int remove(int index){
-	if(index>size()){
+	if(index>=size()){
 	    throw new IndexOutOfBoundsException();
 	}
 	LNode head = start;
@@ -108,5 +111,27 @@ public class MyLinkedList{
 	    i++;
 	}
 	return 0;
+    }
+    public boolean add(int index,int value){
+	if(index>size()){
+	    throw new IndexOutOfBoundsException();
+	}
+	if(index==size()){
+	    add(value);
+	}
+	if(index==0){
+	    start=new LNode(value,start);
+	}
+	LNode head = start;
+	int i = 0;
+	while(i<size()){
+	    if(i==index-1){
+		head.setNext(new LNode(value,head.getNext()));
+		return true;
+	    }
+	    i++;
+	    head=head.getNext();
+	}
+	return false;
     }
 }
