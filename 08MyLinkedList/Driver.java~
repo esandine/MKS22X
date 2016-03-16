@@ -1,4 +1,9 @@
 public class Driver{
     public static void main(String[]args){
 	System.out.println("Linked List Driver");
-	MyLinkedList l1 = new MyLinkedList()
+	MyLinkedList l1 = new MyLinkedList();
+	System.out.println(l1);
+	l1.add(4);
+	System.out.println(l1);
+    }
+}

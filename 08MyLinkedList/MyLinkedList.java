@@ -32,16 +32,15 @@ public class MyLinkedList{
     private LNode start;
     private int size;
     public MyLinkedList(){
-	start = new LNode(0,null);
 	size = 0;
     }
     public boolean add(int value){
 	size+=1;
-	LNode head = start;
-	if(head==null){
-	    start=null;
+	if(start==null){
+	    start=new LNode(value,null);
 	    return true;
 	}
+	LNode head = start;
 	while(head.hasNext()){
 	    head=head.getNext();
 	}
@@ -52,9 +51,12 @@ public class MyLinkedList{
 	LNode head = start;
 	String retStr="[";
 	if(head==null){
-	    return retStr+"[";
-	}
-	while(head.hasNext()){
+	    return retStr+"]";
+	}/*else{
+	    retStr+=head.getValue();
+	    retStr+=",";
+	    }*/
+	while(head!=null){
 	    retStr+=head.getValue();
 	    retStr+=",";
 	    head=head.getNext();

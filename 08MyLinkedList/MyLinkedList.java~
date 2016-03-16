@@ -48,7 +48,17 @@ public class MyLinkedList{
 	head.setNext(new LNode(value,null));
 	return true;
     }
-    public string toString(){
+    public String toString(){
 	LNode head = start;
-	if(LNode==
+	String retStr="[";
+	if(head==null){
+	    return retStr+"[";
+	}
+	while(head.hasNext()){
+	    retStr+=head.getValue();
+	    retStr+=",";
+	    head=head.getNext();
+	}
+	return retStr+"]";
+    }
 }
