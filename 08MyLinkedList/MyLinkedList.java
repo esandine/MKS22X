@@ -6,9 +6,8 @@ public class MyLinkedList{
 	    value = v;
 	    next = n;
 	}
-	public LNode(){
-	    value = 0;
-	    next = null;
+	public LNode(int n){
+	    this(n,null);
 	}
 	public void setValue(int n){
 	    value = n;
@@ -53,12 +52,11 @@ public class MyLinkedList{
     public String toString(){
 	LNode head = start;
 	String retStr="[";
-	if(head==null){
-	    return retStr+"]";
-	}
 	while(head!=null){
 	    retStr+=head.getValue();
-	    retStr+=",";
+	    if(head.getNext()!=null){
+		retStr+=", ";
+	    }
 	    head=head.getNext();
 	}
 	return retStr+"]";
@@ -79,6 +77,9 @@ public class MyLinkedList{
 	return -1;
     }
     public int set(int index,int newValue){
+	if(index>=size()){
+	    throw new IndexOutOfBoundsException();
+	}
 	int i = 0;
 	LNode head = start;
 	while(head!=null){
