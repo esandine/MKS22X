@@ -145,7 +145,8 @@ public class Quick{
         System.out.println(retStr);
     }
     public static boolean checkPartition(int[]data){
-	int[]test = new int[2];
+	int[]test = new int[10000000];
+	fillRandom(test);
 	test=partition(data,0,data.length-1);
 	int value = data[test[0]];
 	for(int i = 0;i<test[0];i++){
