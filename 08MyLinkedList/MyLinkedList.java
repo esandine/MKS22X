@@ -29,26 +29,23 @@ public class MyLinkedList{
 	}
     }
     private LNode start;
+    private LNode end;
     private int size;
     public int size(){
 	return size;
-    }
-    public MyLinkedList(){
-	size = 0;
     }
     public boolean add(int value){
 	size+=1;
 	if(start==null){
 	    start=new LNode(value,null);
+	    end=start;
 	    return true;
 	}
-	LNode head = start;
-	while(head.hasNext()){
-	    head=head.getNext();
-	}
-	head.setNext(new LNode(value,null));
+	end.setNext(new LNode(value));
+	end=end.getNext();
 	return true;
     }
+
     public String toString(){
 	LNode head = start;
 	String retStr="[";
@@ -97,6 +94,7 @@ public class MyLinkedList{
 	if(index>=size()){
 	    throw new IndexOutOfBoundsException();
 	}
+	size--;
 	LNode head = start;
 	int i = 0;
 	if(index==0){
@@ -106,6 +104,9 @@ public class MyLinkedList{
 	    if(i == index-1){
 		i = head.getNext().getValue();
 		head.setNext(head.getNext().getNext());
+		if(head.getNext()==null){
+		    end=head;
+		}
 		return i;
 	    }
 	    head = head.getNext();
@@ -122,6 +123,7 @@ public class MyLinkedList{
 	}
 	if(index==0){
 	    start=new LNode(value,start);
+	    return true;
 	}
 	LNode head = start;
 	int i = 0;
@@ -131,7 +133,9 @@ public class MyLinkedList{
 		return true;
 	    }
 	    i++;
-	    head=head.getNext();
+	    if(head.hasNext()){
+		head=head.getNext();
+	    }
 	}
 	return false;
     }
@@ -146,5 +150,10 @@ public class MyLinkedList{
 	    head=head.getNext();
 	}
 	return -1;
+    }
+    public boolean clear(){
+	start = null;
+	size=0;
+	return true;
     }
 }
