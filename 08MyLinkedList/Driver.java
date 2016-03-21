@@ -2,7 +2,7 @@ import java.util.*;
 public class Driver{
     public static void main(String[]args){
 	System.out.println("Linked List Driver");
-	MyLinkedList l1 = new MyLinkedList();
+	MyLinkedList<Integer> l1 = new MyLinkedList<Integer>();
 	ArrayList<Integer> l2 = new ArrayList<Integer>();
 	long start = 0;
 	long end = 0;
