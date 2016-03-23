@@ -114,7 +114,9 @@ public class MyLinkedList<T>{
 	int i = 0;
 	T retValue = null;
 	if(index==0){
+	    retValue=start.getValue();
 	    start=start.getNext();
+	    return retValue;
 	}
 	while(head!=null){
 	    if(i == index-1){

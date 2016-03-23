@@ -93,6 +93,11 @@ public class Driver{
         }
         System.out.println(m.toString(true));
         System.out.println(n);
+	for(int i = 0;i<m.size();i++){
+	    if(!(m.get(i).equals(n.get(i)))){
+		System.out.println("Falsity");
+	    }
+	}
 
         /*test speed of add in front and at end.
         long start,end;
