@@ -35,7 +35,7 @@ public class MyLinkedList<T>{
 	return size;
     }
     public boolean add(T value){
-	size+=1;
+	size++;
 	if(start==null){
 	    start=new LNode(value,null);
 	    end=start;
@@ -43,6 +43,7 @@ public class MyLinkedList<T>{
 	}
 	end.setNext(new LNode(value));
 	end=end.getNext();
+	//System.out.println("Added to the end");
 	return true;
     }
 
@@ -58,10 +59,12 @@ public class MyLinkedList<T>{
 	}
 	retStr+="]";
 	if(b){
-	    retStr+=" Head:";
+	    retStr+=" Head: ";
 	    retStr+=start.getValue();
-	    retStr+=", Tail";
+	    retStr+=", Tail: ";
 	    retStr+=end.getValue();
+	    retStr+=", Size: ";
+	    return retStr+size();
 	}else{
 	    return retStr;
 	}
@@ -132,9 +135,10 @@ public class MyLinkedList<T>{
 	    throw new IndexOutOfBoundsException();
 	}
 	if(index==size()){
-	    add(value);
+	    return add(value);
 	}
 	if(index==0){
+	    size++;
 	    start=new LNode(value,start);
 	    return true;
 	}
