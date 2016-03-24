@@ -98,7 +98,10 @@ public class Driver{
 		System.out.println("Falsity");
 	    }
 	}
-
+	System.out.println("\n\nTesting Iterator\n\n");
+	for(String s:m){
+	    System.out.println(s);
+	}
         /*test speed of add in front and at end.
         long start,end;
         System.out.println("Add 100k to front");
