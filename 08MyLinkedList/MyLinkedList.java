@@ -38,6 +38,9 @@ public class MyLinkedList<T> implements Iterable<T>{
 	    return current!=null;
 	}
 	public T next(){
+	    if(!hasNext()){
+		throw new NoSuchElementException();
+	    }
 	    T retValue = current.getValue();
 	    current = current.getNext();
 	    return retValue;
