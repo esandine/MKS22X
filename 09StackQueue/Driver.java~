@@ -1,0 +1,5 @@
+public class Driver{
+    public static void main(String[]args){
+	MyQueue<String> q1 = new MyQueue<String>();
+	MyStack<String> s1 = new MyStack<Stack>();
+	g1.enqueue
