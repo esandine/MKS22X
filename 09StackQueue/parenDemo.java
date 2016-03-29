@@ -1,5 +1,5 @@
 public class parenDemo{
-    public static boolean parenCheck(String s){
+    public static boolean isMatching(String s){
 	MyStack<Character> stack = new MyStack<Character>();
 	char c = '0';
 	for(int i = 0;i<s.length();i++){
@@ -55,6 +55,6 @@ public class parenDemo{
 	if(args.length>0){
 	    s=args[0];
 	}
-	System.out.println(parenCheck(s));
+	System.out.println(isMatching(s));
     }
 }
