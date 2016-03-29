@@ -1,0 +1,28 @@
+public class parenDemo{
+    public static boolean parenCheck(String s){
+	MyStack<Character> stack = new MyStack<Character>();
+	char c = '0';
+	for(int i = 0;i<s.length();i++){
+	    c = s.charAt(i);
+	    if((c=='{')||(c=='[')||(c=='(')||(c=='<')){
+		stack.push(c);
+	    }
+	    if(c=='}'){
+		if((stack.size==0)||(stack.pop()!='{')){
+		    return false;
+		}
+		if(stack.pop()!='<'){
+		    return false;
+		}
+	    }
+	}
+	return stack.size()==0;
+    }
+    public static void main(String[]args){
+	String s = "";
+	if(args.length>0){
+	    s=args[0];
+	}
+	System.out.println(parenCheck(s));
+    }
+}
