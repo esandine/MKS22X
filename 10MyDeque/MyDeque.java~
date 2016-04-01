@@ -1,0 +1,6 @@
+public class DeQue<T>{
+    private int start;
+    private int end;
+    private int size;
+    private T[] data;
+}
