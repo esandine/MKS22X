@@ -3,7 +3,9 @@ public class MyDeque<T>{
     private int end;
     private int size;
     private T[] data;
-    public Deque(){
-	
-	for(int i = 0
+    @SuppressWarnings({"unchecked"})
+	public MyDeque(){
+	data=(T[])new Object[10];
+    }
+    
 }
