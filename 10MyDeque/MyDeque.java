@@ -8,8 +8,11 @@ public class MyDeque<T>{
 	public MyDeque(){
 	data=(T[])new Object[10];
     }
-    private int size(){
+    public int size(){
 	return size;
+    }
+    public boolean isEmpty(){
+	return size()==0;
     }
     public int getStart(){
 	return start;
