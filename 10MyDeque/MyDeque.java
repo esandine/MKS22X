@@ -25,7 +25,7 @@ public class MyDeque<T>{
 	return retStr;
     }
     @SuppressWarnings({"unchecked"})
-	public void grow(){
+	private void grow(){
 	T[] newData = (T[])new Object[data.length*2];
 	int i = start;
 	int newI = 0;
@@ -103,6 +103,18 @@ public class MyDeque<T>{
 	}
 	size-=1;
 	return retValue;
+    }
+    public T getFirst(){
+	if(size()==0){
+	    throw new NoSuchElementException();
+	}
+	return data[start];
+    }
+    public T getLast(){
+	if(size()==0){
+	    throw new NoSuchElementException();
+	}
+	return data[end];
     }
     public String toString(){
 	int i = start;
