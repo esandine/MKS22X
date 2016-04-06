@@ -10,6 +10,19 @@ public class MyDeque<T>{
     private int size(){
 	return size;
     }
+    public int getStart(){
+	return start;
+    }
+    public int getEnd(){
+	return end;
+    }
+    public String printData(){
+	String retStr="[";
+	for(int i = 0;i<data.length;i++){
+	    retStr+=data[i]+",";
+	}
+	return retStr;
+    }
     @SuppressWarnings({"unchecked"})
 	private void grow(){
 	T[] newData = (T[])new Object[data.length*2];
@@ -43,6 +56,23 @@ public class MyDeque<T>{
 	    end = 0;
 	}
 	data[end]=value;
+	size+=1;
+    }
+    public void addFirst(T value){
+	if(size()+1==data.length){
+	    grow();
+	}
+	if(start>0){
+	    start -= 1;
+	}
+	else{
+	    start=data.length-1;
+	}
+	if(size()==0){
+	    start = 0;
+	    end = 0;
+	}
+	data[start]=value;
 	size+=1;
     }
     public String toString(){
