@@ -24,7 +24,7 @@ public class MyDeque<T>{
 	return retStr;
     }
     @SuppressWarnings({"unchecked"})
-	private void grow(){
+	public void grow(){
 	T[] newData = (T[])new Object[data.length*2];
 	int i = start;
 	int newI = 0;
@@ -37,12 +37,14 @@ public class MyDeque<T>{
 	    }
 	    newI++;
 	}
-	newData[i]=data[end];
+	newData[newI]=data[end];
+	start=0;
+	end=newI;
 	data=newData;
     }
 	
     public void addLast(T value){
-	if(size()+1==data.length){
+	if(size()==data.length){
 	    grow();
 	}
 	if(end<data.length-1){
@@ -59,7 +61,7 @@ public class MyDeque<T>{
 	size+=1;
     }
     public void addFirst(T value){
-	if(size()+1==data.length){
+	if(size()==data.length){
 	    grow();
 	}
 	if(start>0){
