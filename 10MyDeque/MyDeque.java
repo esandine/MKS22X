@@ -10,7 +10,28 @@ public class MyDeque<T>{
     private int size(){
 	return size;
     }
+    @SuppressWarnings({"unchecked"})
+	private void grow(){
+	T[] newData = (T[])new Object[data.length*2];
+	int i = start;
+	int newI = 0;
+	while(i!=end){
+	    newData[newI]=data[i];
+	    if(i==data.length-1){
+		i=0;
+	    }else{
+		i++;
+	    }
+	    newI++;
+	}
+	newData[i]=data[end];
+	data=newData;
+    }
+	
     public void addLast(T value){
+	if(size()+1==data.length){
+	    grow();
+	}
 	if(end<data.length-1){
 	    end += 1;
 	}
