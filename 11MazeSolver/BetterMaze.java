@@ -23,6 +23,20 @@ public class BetterMaze{
 	public void setYcor(int y){
 	    ycor=y;
 	}
+	public void addPath(Node n){
+	    path.enqueue(n);
+	}
+	public int[] getPath(){
+	    int[] solution = new int[path.size()*2];
+	    int i = 0;
+	    while(path.size()>0){
+		solution[i]=path.peek().getXcor();
+		solution[i+1]=path.dequeue().getYcor();
+		i+=2;
+	    }
+	    return solution;
+	}
+		
     }
 
     //private char[][] maze;
