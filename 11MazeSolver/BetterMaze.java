@@ -11,6 +11,12 @@ public class BetterMaze{
 	public Node(){
 	    this(0,0);
 	}
+	public int getXcor(){
+	    return xcor;
+	}
+	public int getYcor(){
+	    return ycor;
+	}
 	public void setXcor(int x){
 	    xcor=x;
 	}
