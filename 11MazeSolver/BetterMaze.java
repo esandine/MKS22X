@@ -82,18 +82,22 @@ public class BetterMaze{
 		//Checks for solution
 		if(maze[current.getXcor()-1][current.getYcor()]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor()-1,current.getYcor(),current));
+		    debug("Solved");
 		    return true;
 		}
 		if(maze[current.getXcor()+1][current.getYcor()]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor()+1,current.getYcor(),current));
+		    debug("Solved");
 		    return true;
 		}
 		if(maze[current.getXcor()][current.getYcor()-1]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()-1,current));
+		    debug("Solved");
 		    return true;
 		}
 		if(maze[current.getXcor()][current.getYcor()+1]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()+1,current));
+		    debug("Solved");
 		    return true;
 		}
 
