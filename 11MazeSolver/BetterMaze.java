@@ -114,12 +114,18 @@ public class BetterMaze{
 		if(maze[current.getXcor()][current.getYcor()+1]==' '){
 		    placesToGo.add(new Node(current.getXcor(),current.getYcor()+1,current));
 		}
+		wait(100);
+		if(animate){
+		    System.out.println(this);
+		}
 	    }
 	    return false;
 	}    
     private int[] nodeToSolution(Node n){
 	Stack<Integer> solution =new Stack<Integer>();
 	while(n.getPrev()!=null){
+	    debug("Turkey");
+	    maze[n.getXcor()][n.getYcor()]='@';
 	    solution.push(n.getXcor());
 	    solution.push(n.getYcor());
 	    n=n.getPrev();
@@ -134,7 +140,9 @@ public class BetterMaze{
     }
      
 	/**mutator for the animate variable  **/
-    public void setAnimate(boolean b){  /** IMPLEMENT THIS **/ }
+    public void setAnimate(boolean b){
+	animate=b;
+    }
 
 
 	public BetterMaze(String filename){
@@ -176,13 +184,6 @@ public class BetterMaze{
 		}
 	    }
 	}
-
-
-
-
-
-
-
 	private static final String CLEAR_SCREEN =  "\033[2J";
 	private static final String HIDE_CURSOR =  "\033[?25l";
 	private static final String SHOW_CURSOR =  "\033[?25h";
