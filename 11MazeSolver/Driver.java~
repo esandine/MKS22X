@@ -1,0 +1,6 @@
+public class Driver{
+    public static void main(String[]args){
+	m1 = new BetterMaze("data1.dat");
+	System.out.println(m1);
+    }
+}

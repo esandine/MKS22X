@@ -33,7 +33,6 @@ public class BetterMaze{
 	}
 		
     }
- 
 	private char[][] maze;
 	private int[]    solution;
 	private int      startRow,startCol;
@@ -50,35 +49,88 @@ public class BetterMaze{
 	 **/
 	public int[] solutionCoordinates(){
 	    /** IMPLEMENT THIS **/      
-	    return new int[1];
+	    return solution;
 	}    
 
 
 	/**initialize the frontier as a queue and call solve
 	 **/
-	public boolean solveBFS(){  
+    public boolean solveBFS(){  
+	placesToGo=new FrontierQueue<Node>();
+	return solve();
 	    /** IMPLEMENT THIS **/      
-	    return false;
 	}   
 
 
 	/**initialize the frontier as a stack and call solve
 	 */ 
 	public boolean solveDFS(){  
+	    placesToGo=new FrontierStack<Node>();
 	    /** IMPLEMENT THIS **/  
-	    return false;
+	    return solve();
 	}    
 
 	/**Search for the end of the maze using the frontier. 
       Keep going until you find a solution or run out of elements on the frontier.
 	**/
-	private boolean solve(){  
-	    /** IMPLEMENT THIS **/  
+	public boolean solve(){  
+	    placesToGo.add(new Node(startRow,startCol,null));
+	    Node current;
+	    while(placesToGo.hasNext()){
+		current=placesToGo.next();
+		maze[current.getXcor()][current.getYcor()]='.';
+		//Checks for solution
+		if(maze[current.getXcor()-1][current.getYcor()]=='E'){
+		    solution=nodeToSolution(new Node(current.getXcor()-1,current.getYcor(),current));
+		    return true;
+		}
+		if(maze[current.getXcor()+1][current.getYcor()]=='E'){
+		    solution=nodeToSolution(new Node(current.getXcor()+1,current.getYcor(),current));
+		    return true;
+		}
+		if(maze[current.getXcor()][current.getYcor()-1]=='E'){
+		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()-1,current));
+		    return true;
+		}
+		if(maze[current.getXcor()][current.getYcor()+1]=='E'){
+		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()+1,current));
+		    return true;
+		}
+
+		//Adds to the list
+		if(maze[current.getXcor()-1][current.getYcor()]==' '){
+		    placesToGo.add(new Node(current.getXcor()-1,current.getYcor(),current));
+		}
+		if(maze[current.getXcor()+1][current.getYcor()]==' '){
+		    placesToGo.add(new Node(current.getXcor()+1,current.getYcor(),current));
+		}
+		if(maze[current.getXcor()][current.getYcor()-1]==' '){
+		    placesToGo.add(new Node(current.getXcor(),current.getYcor()-1,current));
+		}
+		if(maze[current.getXcor()][current.getYcor()+1]==' '){
+		    placesToGo.add(new Node(current.getXcor(),current.getYcor()+1,current));
+		}
+	    }
 	    return false;
 	}    
+    private int[] nodeToSolution(Node n){
+	Stack<Integer> solution =new Stack<Integer>();
+	while(n.getPrev()!=null){
+	    solution.push(n.getXcor());
+	    solution.push(n.getYcor());
+	    n=n.getPrev();
+	}
+	int[]ret=new int[solution.size()];
+	int i = 0;
+	while(solution.size()>0){
+	    ret[i]=solution.pop();
+	    i++;
+	}
+	return ret;
+    }
      
 	/**mutator for the animate variable  **/
-	public void setAnimate(boolean b){  /** IMPLEMENT THIS **/ }    
+    public void setAnimate(boolean b){  /** IMPLEMENT THIS **/ }
 
 
 	public BetterMaze(String filename){
@@ -175,10 +227,13 @@ public class BetterMaze{
 		return ans + color(37,40) + "\n";
 	    }
 	}
-
+    private boolean debug=true;
+    private void debug(Object o){
+	if(debug){
+	    System.out.println(o);
+	}
     }
-
-
+}
 
 
 
