@@ -83,21 +83,25 @@ public class BetterMaze{
 		if(maze[current.getXcor()-1][current.getYcor()]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor()-1,current.getYcor(),current));
 		    debug("Solved");
+		    markSolution();
 		    return true;
 		}
 		if(maze[current.getXcor()+1][current.getYcor()]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor()+1,current.getYcor(),current));
 		    debug("Solved");
+		    markSolution();
 		    return true;
 		}
 		if(maze[current.getXcor()][current.getYcor()-1]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()-1,current));
 		    debug("Solved");
+		    markSolution();
 		    return true;
 		}
 		if(maze[current.getXcor()][current.getYcor()+1]=='E'){
 		    solution=nodeToSolution(new Node(current.getXcor(),current.getYcor()+1,current));
 		    debug("Solved");
+		    markSolution();
 		    return true;
 		}
 
@@ -236,6 +240,11 @@ public class BetterMaze{
     private void debug(Object o){
 	if(debug){
 	    System.out.println(o);
+	}
+    }
+    public void markSolution(){
+	for(int i = 0;i+1<solution.length;i+=2){
+	    maze[solution[i]][solution[i+1]]='@';
 	}
     }
 }

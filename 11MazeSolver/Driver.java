@@ -9,5 +9,6 @@ public class Driver{
 	    System.out.println(m1.solveDFS());
 	}
 	System.out.println(Arrays.toString(m1.solutionCoordinates()));
+	System.out.println(m1);
     }
 }
