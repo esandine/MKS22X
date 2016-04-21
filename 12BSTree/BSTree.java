@@ -23,13 +23,54 @@ public class BSTree<T extends Comparable<T>>{
 	    return data;
 	}
 	public Node(T value){
-	    setData(t);
+	    setData(value);
 	}
+	private int height(){
+	    if(getLeft()==null&&getRight()==null){
+		return 1;
+	    }
+	    else if(getLeft() == null){
+		return 1 + getRight().height();
+	    }
+	    else if(getRight() == null){
+		return 1 + getLeft().height();
+	    }else{
+		return 1 + Math.max(getLeft().height(),getRight().height());
+	    }
+	}
+	
 	private void add(T value){
-	    if(getLeft()==null){
-		setLeft(new Node(value));
-	    }else if(getRight()==null){
-		
+	    if(value.compareTo(getData())<0){
+		if(getLeft()==null){
+		    setLeft(new Node(value));
+		}else{
+		    getLeft().add(value);
+		}
+	    }else{
+		if(getRight()==null){
+		    setRight(new Node(value));
+		}else{
+		    getRight().add(value);
+		}
+	    }
+	}
+	private String toString(){
+	    retStr=getData()+" ";
+	    if(getLeft()!=null){
+		retStr+=getLeft().toString();
+	    }else{
+		retStr+="_ ";
+	    }
+	    if(getRight()!=null){
+		retStr+=getRight().toString();
+	    }else{
+		retStr+="_ ";
+	    }
+	    return retStr;
+	}
+	private boolean contains(T value){
+	    if(getData()==value){
+		return true;
 	    }
 	    
 	}
