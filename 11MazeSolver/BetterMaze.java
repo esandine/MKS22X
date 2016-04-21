@@ -128,8 +128,6 @@ public class BetterMaze{
     private int[] nodeToSolution(Node n){
 	Stack<Integer> solution =new Stack<Integer>();
 	while(n.getPrev()!=null){
-	    debug("Turkey");
-	    maze[n.getXcor()][n.getYcor()]='@';
 	    solution.push(n.getXcor());
 	    solution.push(n.getYcor());
 	    n=n.getPrev();
@@ -244,7 +242,7 @@ public class BetterMaze{
     }
     public void markSolution(){
 	for(int i = 0;i+1<solution.length;i+=2){
-	    maze[solution[i]][solution[i+1]]='@';
+	    maze[solution[i+1]][solution[i]]='@';
 	}
     }
 }
