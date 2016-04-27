@@ -6,5 +6,6 @@ public class Driver{
 	t1.add(2);
 	t1.add(456456);
 	System.out.println(t1);
+	System.out.println(t1.getHeight());
     }
 }
