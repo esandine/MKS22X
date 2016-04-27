@@ -68,12 +68,24 @@ public class BSTree<T extends Comparable<T>>{
 	    }
 	    return retStr;
 	}
-	//private boolean contains(T value){
-	//    if(getData()==value){
-	//	return true;
-	//    }
-	//    
-	//}
+	private boolean contains(T value){
+	    if(getData()==value){
+		return true;
+	    }
+	    if(getLeft()==null&&getRight()==null){
+		return false;
+	    }
+	    if(getLeft()==null){
+		return getRight().contains(value);
+	    }
+	    if(getRight()==null){
+		return getLeft().contains(value);
+	    }
+	    else{
+		return getLeft().contains(value)||getRight().contains(value);
+	    }
+	    
+	}
     }
     private Node root;
     //OUTER methods here are wrapper methods for the root
@@ -105,6 +117,11 @@ public class BSTree<T extends Comparable<T>>{
     }
     public boolean contains(T value){
 	//check for empty before you do things with root.
-	return false;
+	if(root==null){
+	    return false;
+	}
+	else{
+	    return root.contains(value);
+	}
     }
 }
