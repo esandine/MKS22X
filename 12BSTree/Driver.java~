@@ -1,0 +1,7 @@
+public class Driver{
+    public static void main(String[] args){
+	BSTree<int> t1= new BSTree<int>();
+	t1.add(3);
+	System.out.println(t1);
+    }
+}
