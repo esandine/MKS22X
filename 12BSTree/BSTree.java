@@ -69,7 +69,7 @@ public class BSTree<T extends Comparable<T>>{
 	    return retStr;
 	}
 	private boolean contains(T value){
-	    if(getData()==value){
+	    if(getData().equals(valu)e){
 		return true;
 	    }
 	    if(getLeft()==null&&getRight()==null){
@@ -83,8 +83,37 @@ public class BSTree<T extends Comparable<T>>{
 	    }
 	    else{
 		return getLeft().contains(value)||getRight().contains(value);
+	    }	    
+	}
+	private void remove(T value){
+	    if(getLeft()!=null){
+		Node left = getLeft();
+		if(left.getValue().equals(value)){
+		    if((left.getLeft()==null)&&(left.getRight()==null)){
+			setLeft(null);
+		    }else if(left.getRight()==null){
+			setLeft(left.getLeft());
+		    }else{
+			setLeft(left.getRight());
+		    }
+		}else{
+		    getLeft().remove(value);
+		}
 	    }
-	    
+	    if(getRight()!=null){
+		Node right = getRight();
+		if(right.getValue().equals(value)){
+		    if((right.getLeft()==null)&&(right.getRight()==null)){
+			setRight(null);
+		    }else if(right.getLeft()==null){
+			setRight(right.getRight());
+		    }else{
+			setRight(right.getLeft());
+		    }
+		}else{
+		    getRight().remove(value);
+		}
+	    }
 	}
     }
     private Node root;
@@ -122,6 +151,11 @@ public class BSTree<T extends Comparable<T>>{
 	}
 	else{
 	    return root.contains(value);
+	}
+    }
+    public void remove(T value){
+	if(root!=null){
+	    root.remove(value);
 	}
     }
 }
