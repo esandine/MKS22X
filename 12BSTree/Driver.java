@@ -6,7 +6,7 @@ public class Driver{
 	t1.add(2);
 	t1.add(456456);
 	System.out.println(t1);
-	t1.remove(2);
+	t1.remove(3);
 	System.out.println(t1);
     }
 }

@@ -54,6 +54,15 @@ public class BSTree<T extends Comparable<T>>{
 		}
 	    }
 	}
+	private void add(Node n){
+	    add(n.getData());
+	    if(n.getLeft()!=null){
+		add(n.getLeft());
+	    }
+	    if(n.getRight()!=null){
+		add(n.getRight());
+	    }
+	}
 	public String toString(){
 	    String retStr=getData()+" ";
 	    if(getLeft()!=null){
@@ -158,8 +167,14 @@ public class BSTree<T extends Comparable<T>>{
 	    if(root.getData().equals(value)){
 	        if((root.getLeft()==null)&&(root.getRight()==null)){
 		    root = null;
+		}else if(root.getLeft()==null){
+		    root=root.getRight();
+		}else if(root.getRight()==null){
+		    root=root.getLeft();
 		}else{
-		    root = root.getRight();
+		    Node toBeAdded = root.getLeft();
+		    root=root.getRight();
+		    root.add(toBeAdded);
 		}
 	    }else{
 		root.remove(value);
