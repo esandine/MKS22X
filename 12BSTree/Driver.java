@@ -6,8 +6,10 @@ public class Driver{
 	t1.add(2);
 	t1.add(456456);
 	System.out.println(t1);
-	System.out.println(t1.getHeight());
-	System.out.println(t1.contains(2));
-	System.out.println(t1.contains(6));
+	t1.remove(2);
+	System.out.println(t1);
     }
 }
+
+
+

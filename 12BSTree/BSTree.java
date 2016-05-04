@@ -69,7 +69,7 @@ public class BSTree<T extends Comparable<T>>{
 	    return retStr;
 	}
 	private boolean contains(T value){
-	    if(getData().equals(valu)e){
+	    if(getData().equals(value)){
 		return true;
 	    }
 	    if(getLeft()==null&&getRight()==null){
@@ -88,7 +88,7 @@ public class BSTree<T extends Comparable<T>>{
 	private void remove(T value){
 	    if(getLeft()!=null){
 		Node left = getLeft();
-		if(left.getValue().equals(value)){
+		if(left.getData().equals(value)){
 		    if((left.getLeft()==null)&&(left.getRight()==null)){
 			setLeft(null);
 		    }else if(left.getRight()==null){
@@ -102,7 +102,7 @@ public class BSTree<T extends Comparable<T>>{
 	    }
 	    if(getRight()!=null){
 		Node right = getRight();
-		if(right.getValue().equals(value)){
+		if(right.getData().equals(value)){
 		    if((right.getLeft()==null)&&(right.getRight()==null)){
 			setRight(null);
 		    }else if(right.getLeft()==null){
@@ -155,7 +155,16 @@ public class BSTree<T extends Comparable<T>>{
     }
     public void remove(T value){
 	if(root!=null){
-	    root.remove(value);
+	    if(root.getData().equals(value)){
+	        if((root.getLeft()==null)&&(root.getRight()==null)){
+		    root = null;
+		}else{
+		    root = root.getRight();
+		}
+	    }else{
+		root.remove(value);
+	    }
 	}
     }
 }
+
