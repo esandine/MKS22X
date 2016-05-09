@@ -60,11 +60,20 @@ public class MyHeap<T extends Comparable<T>>{
 	}
     }
     public T delete(){
+	if(size==0){
+	    throw new NoSuchElementException();
+	}
 	T retValue = data[1];
 	data[1]=data[size];
 	pushDown(1);
 	size--;
 	return retValue;
+    }
+    public T peek(){
+	if(size==0){
+	    throw new NoSuchElementException();
+	}
+	return data[1];
     }
     public void add(T x){
 	size++;
