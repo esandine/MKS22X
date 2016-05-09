@@ -32,12 +32,12 @@ public class MyHeap<T extends Comparable<T>>{
 		pushDown(2*k+1);
 	    }
     }
-private void pushUp(int k)
-	//private void heapify()
-	//public T delete()
-	//public void add(T x)
-	//private void doubleSize()
-	//public String toString()
+    private void pushUp(int k){}
+    private void heapify(){}
+    public T delete(){return null}
+    public void add(T x){}
+    private void doubleSize(){}
+    public String toString(){return "yoyoyoyo"}
 
 	//do this last
 	//public MyHeap(boolean isMax)
